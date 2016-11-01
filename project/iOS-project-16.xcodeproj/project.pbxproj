@@ -8,22 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		CC05B5FE1DC1C27600B92FEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05B5FD1DC1C27600B92FEF /* AppDelegate.swift */; };
-		CC05B6001DC1C27600B92FEF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05B5FF1DC1C27600B92FEF /* FirstViewController.swift */; };
-		CC05B6021DC1C27600B92FEF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05B6011DC1C27600B92FEF /* SecondViewController.swift */; };
 		CC05B6051DC1C27600B92FEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC05B6031DC1C27600B92FEF /* Main.storyboard */; };
 		CC05B6071DC1C27600B92FEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC05B6061DC1C27600B92FEF /* Assets.xcassets */; };
 		CC05B60A1DC1C27600B92FEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC05B6081DC1C27600B92FEF /* LaunchScreen.storyboard */; };
+		CC3DA0C31DC46D00005C454C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3DA0C21DC46D00005C454C /* Event.swift */; };
+		CC3DA0C51DC47F35005C454C /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3DA0C41DC47F35005C454C /* NewEventViewController.swift */; };
+		CC3DA0C91DC4801A005C454C /* EventsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3DA0C81DC4801A005C454C /* EventsListTableViewController.swift */; };
+		CC3DA0CB1DC5184E005C454C /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3DA0CA1DC5184E005C454C /* EventTableViewCell.swift */; };
+		CC74B62F1DC70ED800561F75 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC74B62E1DC70ED800561F75 /* MyEventsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CC05B5FA1DC1C27600B92FEF /* iOS-project-16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-project-16.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC05B5FD1DC1C27600B92FEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CC05B5FF1DC1C27600B92FEF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		CC05B6011DC1C27600B92FEF /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		CC05B6041DC1C27600B92FEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC05B6061DC1C27600B92FEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC05B6091DC1C27600B92FEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC05B60B1DC1C27600B92FEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC3DA0C21DC46D00005C454C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		CC3DA0C41DC47F35005C454C /* NewEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
+		CC3DA0C81DC4801A005C454C /* EventsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListTableViewController.swift; sourceTree = "<group>"; };
+		CC3DA0CA1DC5184E005C454C /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		CC74B62E1DC70ED800561F75 /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +63,15 @@
 			isa = PBXGroup;
 			children = (
 				CC05B5FD1DC1C27600B92FEF /* AppDelegate.swift */,
-				CC05B5FF1DC1C27600B92FEF /* FirstViewController.swift */,
-				CC05B6011DC1C27600B92FEF /* SecondViewController.swift */,
 				CC05B6031DC1C27600B92FEF /* Main.storyboard */,
 				CC05B6061DC1C27600B92FEF /* Assets.xcassets */,
 				CC05B6081DC1C27600B92FEF /* LaunchScreen.storyboard */,
 				CC05B60B1DC1C27600B92FEF /* Info.plist */,
+				CC3DA0C21DC46D00005C454C /* Event.swift */,
+				CC3DA0C41DC47F35005C454C /* NewEventViewController.swift */,
+				CC3DA0C81DC4801A005C454C /* EventsListTableViewController.swift */,
+				CC3DA0CA1DC5184E005C454C /* EventTableViewCell.swift */,
+				CC74B62E1DC70ED800561F75 /* MyEventsViewController.swift */,
 			);
 			path = "iOS-project-16";
 			sourceTree = "<group>";
@@ -140,9 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC05B6021DC1C27600B92FEF /* SecondViewController.swift in Sources */,
+				CC3DA0C31DC46D00005C454C /* Event.swift in Sources */,
+				CC74B62F1DC70ED800561F75 /* MyEventsViewController.swift in Sources */,
+				CC3DA0C51DC47F35005C454C /* NewEventViewController.swift in Sources */,
+				CC3DA0C91DC4801A005C454C /* EventsListTableViewController.swift in Sources */,
+				CC3DA0CB1DC5184E005C454C /* EventTableViewCell.swift in Sources */,
 				CC05B5FE1DC1C27600B92FEF /* AppDelegate.swift in Sources */,
-				CC05B6001DC1C27600B92FEF /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +318,7 @@
 				CC05B6101DC1C27600B92FEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
