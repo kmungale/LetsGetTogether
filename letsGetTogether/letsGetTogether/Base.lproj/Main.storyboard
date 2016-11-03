@@ -9,7 +9,7 @@
         <!--New Event-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="NewEventViewController" customModule="iOS_project_16" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="NewEventViewController" customModule="letsGetTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -113,26 +113,43 @@
                         <outlet property="locationValue" destination="EWA-fO-KrU" id="yr9-gC-WPv"/>
                         <outlet property="mapView" destination="jug-pR-dwT" id="N2m-Q3-XDi"/>
                         <outlet property="maxCountValue" destination="syR-zU-JB2" id="0aZ-PI-RVr"/>
+                        <outlet property="searchDisplayController" destination="yq6-Bq-Ou2" id="BoN-Wm-ExI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Qed-9M-e3g">
+                    <connections>
+                        <outlet property="delegate" destination="8rJ-Kc-sve" id="XRa-wT-FUJ"/>
+                        <outlet property="searchContentsController" destination="8rJ-Kc-sve" id="P55-Rc-AMF"/>
+                        <outlet property="searchResultsDataSource" destination="8rJ-Kc-sve" id="mgI-4R-ba6"/>
+                        <outlet property="searchResultsDelegate" destination="8rJ-Kc-sve" id="QN1-gf-uzC"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="yq6-Bq-Ou2">
+                    <connections>
+                        <outlet property="delegate" destination="8rJ-Kc-sve" id="ceK-Cx-1l9"/>
+                        <outlet property="searchContentsController" destination="8rJ-Kc-sve" id="XXs-B6-aCQ"/>
+                        <outlet property="searchResultsDataSource" destination="8rJ-Kc-sve" id="9bZ-SH-eda"/>
+                        <outlet property="searchResultsDelegate" destination="8rJ-Kc-sve" id="Z8w-ts-aUi"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1052" y="1520"/>
+            <point key="canvasLocation" x="1052" y="1519.7901049475263"/>
         </scene>
         <!--Events-->
         <scene sceneID="qqs-hf-igj">
             <objects>
-                <tableViewController id="Jke-Kx-VBS" customClass="EventsListTableViewController" customModule="iOS_project_16" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Jke-Kx-VBS" customClass="EventsListTableViewController" customModule="letsGetTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="117" sectionHeaderHeight="28" sectionFooterHeight="28" id="aW1-Gk-5BV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventTableViewCell" rowHeight="117" id="jRp-GH-YbV" customClass="EventTableViewCell" customModule="iOS_project_16" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventTableViewCell" rowHeight="117" id="jRp-GH-YbV" customClass="EventTableViewCell" customModule="letsGetTogether" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jRp-GH-YbV" id="msC-5F-wJA">
-                                    <frame key="frameInset" width="375" height="116"/>
+                                    <frame key="frameInset" width="375" height="116.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Morning Breakfast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oQ-wT-kMj">
@@ -207,7 +224,7 @@
         <!--My events-->
         <scene sceneID="FlS-2n-Wbd">
             <objects>
-                <viewController id="rhi-1H-TsC" customClass="MyEventsViewController" customModule="iOS_project_16" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rhi-1H-TsC" customClass="MyEventsViewController" customModule="letsGetTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g9w-Pf-cLP"/>
                         <viewControllerLayoutGuide type="bottom" id="3gi-bc-Xfw"/>

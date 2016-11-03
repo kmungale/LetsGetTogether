@@ -23,16 +23,22 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate {
         
         location = CLLocationManager()
         location?.delegate = self
-        location?.desiredAccuracy = kCLLocationAccuracyBest
+        //location?.desiredAccuracy = kCLLocationAccuracyBest
         location?.requestWhenInUseAuthorization()
-        location?.startUpdatingLocation()
+        //location?.startUpdatingLocation()
         mapView.showsUserLocation = true
         
         
-        let address = "1305 Sunset Street, IA, USA"
+        let address = "old capitol mall, Iowa city, USA"
         let geocode = CLGeocoder()
+        var coordinates: CLLocationCoordinate2D?
         geocode.geocodeAddressString(address) { (location, error) in
             self.mapView.addAnnotation(MKPlacemark(placemark: (location?[0])!))
+            coordinates = location?[0].location!.coordinate
+            
+            let center = CLLocationCoordinate2D(latitude: (coordinates?.latitude)!, longitude: (coordinates?.longitude)!)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            self.mapView.setRegion(region, animated: true)
         }
         // Do any additional setup after loading the view.
     }
@@ -53,6 +59,19 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate {
         let newEvent =  Event(name: eventNameValue.text!, description: eventDescriptionValue.text!, dateAndTime: dateAndTimeValue.text!, mapLocation: locationValue.text!, maxCount: Int(maxCountValue.text!)!);
         x.append(newEvent!)
         dataStorage?.set(NSKeyedArchiver.archivedData(withRootObject: x), forKey: "event")
+        
+        let address = "Maclean Hall, Iowa city, USA"
+        let geocode = CLGeocoder()
+        var coordinates: CLLocationCoordinate2D?
+        geocode.geocodeAddressString(address) { (location, error) in
+            coordinates = location?[0].location!.coordinate
+            self.mapView.addAnnotation(MKPlacemark(placemark: (location?[0])!))
+            
+            let center = CLLocationCoordinate2D(latitude: (coordinates?.latitude)!, longitude: (coordinates?.longitude)!)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            self.mapView.setRegion(region, animated: true)
+        }
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -64,9 +83,6 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate {
         self.mapView.setRegion(region, animated: true)
         self.location?.stopUpdatingLocation()
     }
-    
-    
-    
     
     
     /*
