@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CC05B5F91DC1C27600B92FEF"
-               BuildableName = "iOS-project-16.app"
-               BlueprintName = "iOS-project-16"
-               ReferencedContainer = "container:iOS-project-16.xcodeproj">
+               BlueprintIdentifier = "CCD46E591DCB23B700E06F7E"
+               BuildableName = "letsGetTogether.app"
+               BlueprintName = "letsGetTogether"
+               ReferencedContainer = "container:letsGetTogether.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CC05B5F91DC1C27600B92FEF"
-            BuildableName = "iOS-project-16.app"
-            BlueprintName = "iOS-project-16"
-            ReferencedContainer = "container:iOS-project-16.xcodeproj">
+            BlueprintIdentifier = "CCD46E591DCB23B700E06F7E"
+            BuildableName = "letsGetTogether.app"
+            BlueprintName = "letsGetTogether"
+            ReferencedContainer = "container:letsGetTogether.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CC05B5F91DC1C27600B92FEF"
-            BuildableName = "iOS-project-16.app"
-            BlueprintName = "iOS-project-16"
-            ReferencedContainer = "container:iOS-project-16.xcodeproj">
+            BlueprintIdentifier = "CCD46E591DCB23B700E06F7E"
+            BuildableName = "letsGetTogether.app"
+            BlueprintName = "letsGetTogether"
+            ReferencedContainer = "container:letsGetTogether.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CC05B5F91DC1C27600B92FEF"
-            BuildableName = "iOS-project-16.app"
-            BlueprintName = "iOS-project-16"
-            ReferencedContainer = "container:iOS-project-16.xcodeproj">
+            BlueprintIdentifier = "CCD46E591DCB23B700E06F7E"
+            BuildableName = "letsGetTogether.app"
+            BlueprintName = "letsGetTogether"
+            ReferencedContainer = "container:letsGetTogether.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
