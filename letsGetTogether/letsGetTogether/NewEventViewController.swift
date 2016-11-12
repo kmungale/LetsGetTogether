@@ -9,9 +9,15 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
+import FirebaseDatabase
+
+
 
 class NewEventViewController: UIViewController, CLLocationManagerDelegate {
 
+    
+    var ref: FIRDatabaseReference!
 
     var dataStorage: UserDefaults?
     var location: CLLocationManager?
@@ -56,7 +62,7 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var maxCountValue: UITextField!
     
     @IBAction func saveEvent(_ sender: UIButton) {
-        let newEvent =  Event(name: eventNameValue.text!, description: eventDescriptionValue.text!, dateAndTime: dateAndTimeValue.text!, mapLocation: locationValue.text!, maxCount: Int(maxCountValue.text!)!);
+       /* let newEvent =  Event(name: eventNameValue.text!, description: eventDescriptionValue.text!, dateAndTime: dateAndTimeValue.text!, mapLocation: locationValue.text!, maxCount: Int(maxCountValue.text!)!);
         x.append(newEvent!)
         dataStorage?.set(NSKeyedArchiver.archivedData(withRootObject: x), forKey: "event")
         
@@ -69,12 +75,29 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate {
             
             let center = CLLocationCoordinate2D(latitude: (coordinates?.latitude)!, longitude: (coordinates?.longitude)!)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            self.mapView.setRegion(region, animated: true)
-        }
+            self.mapView.setRegion(region, animated: true) */
+        
+        let eventName = eventNameValue.text!
+        let eventLocation = locationValue.text!
+        let eventDescription = eventDescriptionValue.text!
+        let eventDateAndTime = dateAndTimeValue.text!
+        let eventMaxPeople = maxCountValue.text!
+        
+        //TODO: Use class constructor instead of separate variables
+        let post : [String : AnyObject] = ["eventName" : eventName as AnyObject,
+                                           "eventLocation" : eventLocation as AnyObject,
+                                           "eventDescription" : eventDescription as AnyObject,
+                                           "eventDateAndTime" : eventDateAndTime as AnyObject,
+                                           "eventMaxPeople" : eventMaxPeople as AnyObject]
+        
+        let databaseRef = FIRDatabase.database().reference()
+        databaseRef.child("events").childByAutoId().setValue(post)
+        
+        
         
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+   /* func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last! as CLLocation
         
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
@@ -82,7 +105,7 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate {
         
         self.mapView.setRegion(region, animated: true)
         self.location?.stopUpdatingLocation()
-    }
+    } */
     
     
     /*

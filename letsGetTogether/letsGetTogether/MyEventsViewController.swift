@@ -9,9 +9,13 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
+import FirebaseDatabase
+
 
 class MyEventsViewController: UIViewController, CLLocationManagerDelegate {
-
+    
+    
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager?

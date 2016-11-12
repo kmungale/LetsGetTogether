@@ -16,9 +16,14 @@
 		CCD46E781DCB259C00E06F7E /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD46E731DCB259C00E06F7E /* EventTableViewCell.swift */; };
 		CCD46E791DCB259C00E06F7E /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD46E741DCB259C00E06F7E /* MyEventsViewController.swift */; };
 		CCD46E7A1DCB259C00E06F7E /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD46E751DCB259C00E06F7E /* NewEventViewController.swift */; };
+		CCD61D6C1DD456FD0078AC80 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCD61D6B1DD456FD0078AC80 /* GoogleService-Info.plist */; };
+		CCD61D6E1DD4572D0078AC80 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCD61D6D1DD4572D0078AC80 /* GoogleService-Info.plist */; };
+		D357633D84CD3B443C2EFCD8 /* Pods_letsGetTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B45484C2C71443DFC5218FA /* Pods_letsGetTogether.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		592402A6F024D35179C58412 /* Pods-letsGetTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-letsGetTogether.debug.xcconfig"; path = "Pods/Target Support Files/Pods-letsGetTogether/Pods-letsGetTogether.debug.xcconfig"; sourceTree = "<group>"; };
+		9B45484C2C71443DFC5218FA /* Pods_letsGetTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_letsGetTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD46E5A1DCB23B700E06F7E /* letsGetTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = letsGetTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD46E5D1DCB23B700E06F7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCD46E641DCB23B700E06F7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -30,6 +35,10 @@
 		CCD46E731DCB259C00E06F7E /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		CCD46E741DCB259C00E06F7E /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		CCD46E751DCB259C00E06F7E /* NewEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
+		CCD61D6B1DD456FD0078AC80 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CCD61D6D1DD4572D0078AC80 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CCD61D6F1DD513510078AC80 /* letsGetTogether.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = letsGetTogether.entitlements; sourceTree = "<group>"; };
+		D009DFD684391CC72C805072 /* Pods-letsGetTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-letsGetTogether.release.xcconfig"; path = "Pods/Target Support Files/Pods-letsGetTogether/Pods-letsGetTogether.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +46,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D357633D84CD3B443C2EFCD8 /* Pods_letsGetTogether.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6CF07BB5D23C82EFD5FD0CBA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				592402A6F024D35179C58412 /* Pods-letsGetTogether.debug.xcconfig */,
+				D009DFD684391CC72C805072 /* Pods-letsGetTogether.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC5A186099C0442F9DCA9BBF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B45484C2C71443DFC5218FA /* Pods_letsGetTogether.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CCD46E511DCB23B700E06F7E = {
 			isa = PBXGroup;
 			children = (
+				CCD61D6B1DD456FD0078AC80 /* GoogleService-Info.plist */,
 				CCD46E5C1DCB23B700E06F7E /* letsGetTogether */,
 				CCD46E5B1DCB23B700E06F7E /* Products */,
+				6CF07BB5D23C82EFD5FD0CBA /* Pods */,
+				BC5A186099C0442F9DCA9BBF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +92,8 @@
 		CCD46E5C1DCB23B700E06F7E /* letsGetTogether */ = {
 			isa = PBXGroup;
 			children = (
+				CCD61D6F1DD513510078AC80 /* letsGetTogether.entitlements */,
+				CCD61D6D1DD4572D0078AC80 /* GoogleService-Info.plist */,
 				CCD46E711DCB259C00E06F7E /* Event.swift */,
 				CCD46E721DCB259C00E06F7E /* EventsListTableViewController.swift */,
 				CCD46E731DCB259C00E06F7E /* EventTableViewCell.swift */,
@@ -83,9 +115,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CCD46E6E1DCB23B700E06F7E /* Build configuration list for PBXNativeTarget "letsGetTogether" */;
 			buildPhases = (
+				87605743EAAE29A1DCEDAAF3 /* [CP] Check Pods Manifest.lock */,
 				CCD46E561DCB23B700E06F7E /* Sources */,
 				CCD46E571DCB23B700E06F7E /* Frameworks */,
 				CCD46E581DCB23B700E06F7E /* Resources */,
+				2D0C8DDFEDF01906F88B61CA /* [CP] Embed Pods Frameworks */,
+				5E334E36A97CF6180CCC610C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -110,6 +145,14 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = YP969R2E22;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -137,12 +180,62 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCD46E6A1DCB23B700E06F7E /* LaunchScreen.storyboard in Resources */,
+				CCD61D6C1DD456FD0078AC80 /* GoogleService-Info.plist in Resources */,
+				CCD61D6E1DD4572D0078AC80 /* GoogleService-Info.plist in Resources */,
 				CCD46E671DCB23B700E06F7E /* Assets.xcassets in Resources */,
 				CCD46E651DCB23B700E06F7E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D0C8DDFEDF01906F88B61CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-letsGetTogether/Pods-letsGetTogether-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E334E36A97CF6180CCC610C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-letsGetTogether/Pods-letsGetTogether-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87605743EAAE29A1DCEDAAF3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CCD46E561DCB23B700E06F7E /* Sources */ = {
@@ -275,6 +368,7 @@
 		};
 		CCD46E6F1DCB23B700E06F7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 592402A6F024D35179C58412 /* Pods-letsGetTogether.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YP969R2E22;
@@ -288,6 +382,7 @@
 		};
 		CCD46E701DCB23B700E06F7E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D009DFD684391CC72C805072 /* Pods-letsGetTogether.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YP969R2E22;
