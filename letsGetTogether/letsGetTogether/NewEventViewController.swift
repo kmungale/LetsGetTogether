@@ -62,20 +62,6 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var maxCountValue: UITextField!
     
     @IBAction func saveEvent(_ sender: UIButton) {
-       /* let newEvent =  Event(name: eventNameValue.text!, description: eventDescriptionValue.text!, dateAndTime: dateAndTimeValue.text!, mapLocation: locationValue.text!, maxCount: Int(maxCountValue.text!)!);
-        x.append(newEvent!)
-        dataStorage?.set(NSKeyedArchiver.archivedData(withRootObject: x), forKey: "event")
-        
-        let address = "Maclean Hall, Iowa city, USA"
-        let geocode = CLGeocoder()
-        var coordinates: CLLocationCoordinate2D?
-        geocode.geocodeAddressString(address) { (location, error) in
-            coordinates = location?[0].location!.coordinate
-            self.mapView.addAnnotation(MKPlacemark(placemark: (location?[0])!))
-            
-            let center = CLLocationCoordinate2D(latitude: (coordinates?.latitude)!, longitude: (coordinates?.longitude)!)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            self.mapView.setRegion(region, animated: true) */
         
         let eventName = eventNameValue.text!
         let eventLocation = locationValue.text!
@@ -97,25 +83,4 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-   /* func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last! as CLLocation
-        
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
-        self.mapView.setRegion(region, animated: true)
-        self.location?.stopUpdatingLocation()
-    } */
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

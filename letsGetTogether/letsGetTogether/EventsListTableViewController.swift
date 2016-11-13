@@ -22,60 +22,13 @@ struct event {
 
 class EventsListTableViewController: UITableViewController {
 
-    //var events1 = [Event]()
     var events1 = [event]()
     var ref: FIRDatabaseReference!
-    //var events: [FIRDataSnapshot]! = []
     var remoteConfig: FIRRemoteConfig!
-    
-    
     var dataStorage: UserDefaults?
     fileprivate var _refHandle: FIRDatabaseHandle!
     
-//    deinit {
-//        self.ref.child("events").removeObserver(withHandle: _refHandle)
-//    }
-    
-    func configureDatabase() {
-        ref = FIRDatabase.database().reference()
-        // Listen for new messages in the Firebase database
-        //ref.child("events").observeSingleEvent(of: .childAdded, with: { (snapshot) in
-            //print(snapshot);
-        //})
-    }
-    
-    func configureRemoteConfig() {
-        remoteConfig = FIRRemoteConfig.remoteConfig()
-        // Create Remote Config Setting to enable developer mode.
-        // Fetching configs from the server is normally limited to 5 requests per hour.
-        // Enabling developer mode allows many more requests to be made per hour, so developers
-        // can test different config values during development.
-        let remoteConfigSettings = FIRRemoteConfigSettings(developerModeEnabled: true)
-        remoteConfig.configSettings = remoteConfigSettings!
-    }
-    
-    func fetchConfig() {
-        var expirationDuration: Double = 3600
-        // If in developer mode cacheExpiration is set to 0 so each fetch will retrieve values from
-        // the server.
-        if (self.remoteConfig.configSettings.isDeveloperModeEnabled) {
-            expirationDuration = 0
-        }
-        
-        // cacheExpirationSeconds is set to cacheExpiration here, indicating that any previously
-        // fetched and cached config would be considered expired because it would have been fetched
-        // more than cacheExpiration seconds ago. Thus the next fetch would go to the server unless
-        // throttling is in progress. The default expiration duration is 43200 (12 hours).
-        remoteConfig.fetch(withExpirationDuration: expirationDuration) { (status, error) in
-            if (status == .success) {
-                print("Config fetched!")
-                self.remoteConfig.activateFetched()
-            } else {
-                print("Config not fetched")
-                print("Error \(error)")
-            }
-        }
-    }
+ 
     
     override func viewDidAppear(_ animated: Bool) {
         //events = NSKeyedUnarchiver.unarchiveObject(with: dataStorage?.object(forKey: "event") as! Data) as! [Event]
@@ -85,31 +38,7 @@ class EventsListTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        //initialPost()
-        //dataStorage = UserDefaults.standard
-        //events = NSKeyedUnarchiver.unarchiveObject(with: dataStorage?.object(forKey: "event") as! Data) as! [Event]
-        //print(events)
-        
-        //configureDatabase()
-        //configureRemoteConfig()
-        //fetchConfig()
-        //configureDatabase()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        /*let databaseRef = FIRDatabase.database().reference()
-        databaseRef.child("events").queryOrderedByKey().observeSingleEvent(of: .childAdded, with: {
-            
-            snapshot in
-            
-            let eventName = snapshot.value!["eventName"] as! String
-            let eventLocation = snapshot.value!["eventLocation"] as! String
-            
-            
-        }) */
         
         let databaseRef = FIRDatabase.database().reference()
         databaseRef.child("events").queryOrderedByKey().observe(.childAdded, with: {
@@ -132,18 +61,7 @@ class EventsListTableViewController: UITableViewController {
         
     }
     
-    func initialPost(){
-        
-        let eventName = "Halloween"
-        let eventLocation = "California"
-        
-        let post : [String : AnyObject] = ["eventName" : eventName as AnyObject,
-                                           "eventLocation" : eventLocation as AnyObject]
-        
-        let databaseRef = FIRDatabase.database().reference()
-        databaseRef.child("events").childByAutoId().setValue(post)
-        
-    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -167,10 +85,7 @@ class EventsListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "EventTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! EventTableViewCell
-        //let currentEvent = events1[indexPath.row]
-        //cell.eventName.text = currentEvent.eventName
-        //cell.eventLocation.text = currentEvent.mapLocation
-        //cell.eventDateTime.text = currentEvent.dateAndTime
+        
         // Configure the cell...
         
         cell.eventName.text = events1[indexPath.row].eventName
@@ -182,50 +97,18 @@ class EventsListTableViewController: UITableViewController {
         
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    @IBAction func Logout(_ sender: UIBarButtonItem) {
+        
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+            AppState.sharedInstance.signedIn = false
+            dismiss(animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: \(signOutError.localizedDescription)")
+        }
+        
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -6,8 +6,12 @@
 //  Copyright © 2016 Kaustubh. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class AppState: NSObject {
-
+    
+    static let sharedInstance = AppState()
+    
+    var signedIn = false
+    var displayName: String?
 }
