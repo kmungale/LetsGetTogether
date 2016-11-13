@@ -53,6 +53,28 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func forgotPassword(_ sender: UIButton) {
+        
+        let prompt = UIAlertController.init(title: nil, message: "Enter Your Email Id:", preferredStyle: .alert)
+        let okAction = UIAlertAction.init(title: "Send Password Reset Link", style: .default) { (action) in
+            let userInput = prompt.textFields![0].text
+            if (userInput!.isEmpty) {
+                return
+            }
+            FIRAuth.auth()?.sendPasswordReset(withEmail: userInput!) { (error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+            }
+        }
+        prompt.addTextField(configurationHandler: nil)
+        prompt.addAction(okAction)
+        present(prompt, animated: true, completion: nil);
+        
+    }
+    
+    
     func setDisplayName(_ user: FIRUser) {
         let changeRequest = user.profileChangeRequest()
         changeRequest.displayName = user.email!.components(separatedBy: "@")[0]

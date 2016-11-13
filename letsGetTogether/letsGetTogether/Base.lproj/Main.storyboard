@@ -149,7 +149,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jRp-GH-YbV" id="msC-5F-wJA">
-                                    <frame key="frameInset" width="375" height="116.5"/>
+                                    <frame key="frameInset" width="375" height="116"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Morning Breakfast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oQ-wT-kMj">
@@ -328,6 +328,17 @@
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="signUp:" destination="qCC-2W-xoW" eventType="touchUpInside" id="n4s-DX-cqi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xw6-gH-q5u">
+                                <frame key="frameInset" minX="109" minY="382" width="172" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Forgot Password?">
+                                    <color key="titleColor" red="1" green="8.8206359735720774e-05" blue="0.0083910008127507929" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="forgotPassword:" destination="qCC-2W-xoW" eventType="touchUpInside" id="6f7-jZ-rxU"/>
+                                    <action selector="signUp:" destination="qCC-2W-xoW" eventType="touchUpInside" id="RhB-AB-xq5"/>
                                 </connections>
                             </button>
                         </subviews>
