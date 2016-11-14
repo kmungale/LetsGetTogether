@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import CoreLocation
 
 struct event {
     let eventLocation : String!
@@ -16,53 +17,51 @@ struct event {
     let eventDescription : String!
     let eventDateAndTime : String!
     let eventMaxPeople : String!
-    
+    let eventDistance: String!
 }
 
+class EventsListTableViewController: UITableViewController, CLLocationManagerDelegate {
 
-class EventsListTableViewController: UITableViewController {
-
-    var events1 = [event]()
+    var events = [event]()
     var ref: FIRDatabaseReference!
     var remoteConfig: FIRRemoteConfig!
     var dataStorage: UserDefaults?
     fileprivate var _refHandle: FIRDatabaseHandle!
-    
- 
-    
+    var locationManager = CLLocationManager()
+
     override func viewDidAppear(_ animated: Bool) {
         //events = NSKeyedUnarchiver.unarchiveObject(with: dataStorage?.object(forKey: "event") as! Data) as! [Event]
-        tableView.reloadData()
+        //tableView.reloadData()
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let currentLocation = locations.last! as CLLocation
+        locationManager.stopUpdatingLocation()
         
         let databaseRef = FIRDatabase.database().reference()
-        databaseRef.child("events").queryOrderedByKey().observe(.childAdded, with: {
-            
-            snapshot in
-            
+        databaseRef.child("events").queryOrderedByKey().observe(.childAdded, with: {snapshot in
             let eventName = (snapshot.value! as? [String : String])?["eventName"]
             let eventLocation = (snapshot.value! as? [String : String])?["eventLocation"]
             let eventDescription = (snapshot.value! as? [String : String])?["eventDescription"]
             let eventDateAndTime = (snapshot.value! as? [String : String])?["eventDateAndTime"]
             let eventMaxPeople = (snapshot.value! as? [String : String])?["eventMaxPeople"]
+            let destLat = (snapshot.value! as? [String : String])?["destLat"]
+            let destLong = (snapshot.value! as? [String : String])?["destLong"]
+            let destDistance = currentLocation.distance(from: CLLocation(latitude: CLLocationDegrees(destLat!)!, longitude: CLLocationDegrees(destLong!)! ))
             
-            self.events1.insert(event(eventLocation : eventLocation, eventName : eventName, eventDescription : eventDescription, eventDateAndTime : eventDateAndTime, eventMaxPeople : eventMaxPeople) , at: 0)
+            self.events.insert(event(eventLocation : eventLocation, eventName : eventName, eventDescription : eventDescription, eventDateAndTime : eventDateAndTime, eventMaxPeople : eventMaxPeople, eventDistance: String(Int(destDistance)/1000) ) , at: 0)
             self.tableView.reloadData()
-            
-            
-            
         })
-        
-        
     }
     
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -78,27 +77,24 @@ class EventsListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return events1.count
+        return events.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "EventTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! EventTableViewCell
         
         // Configure the cell...
-        
-        cell.eventName.text = events1[indexPath.row].eventName
-        cell.eventLocation.text = events1[indexPath.row].eventLocation
-        cell.eventDateTime.text = events1[indexPath.row].eventDateAndTime
-        
+        cell.eventName.text = events[indexPath.row].eventName
+        cell.eventLocation.text = events[indexPath.row].eventLocation
+        cell.eventDateTime.text = events[indexPath.row].eventDateAndTime
+        cell.eventDistance.text = events[indexPath.row].eventDistance + " Kms away"
         return cell
         
         
     }
     
     @IBAction func Logout(_ sender: UIBarButtonItem) {
-        
         let firebaseAuth = FIRAuth.auth()
         do {
             try firebaseAuth?.signOut()

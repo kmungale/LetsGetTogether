@@ -12,37 +12,29 @@ import CoreLocation
 import Firebase
 import FirebaseDatabase
 
-
-
 class NewEventViewController: UIViewController, CLLocationManagerDelegate {
-
     
     var ref: FIRDatabaseReference!
-
     var dataStorage: UserDefaults?
-    var location: CLLocationManager?
     var x =  [Event]()
+    var location = CLLocationManager()
+    let geocode = CLGeocoder()
+    var coordinates: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataStorage = UserDefaults.standard
-        
-        location = CLLocationManager()
-        location?.delegate = self
+        location.delegate = self
         //location?.desiredAccuracy = kCLLocationAccuracyBest
-        location?.requestWhenInUseAuthorization()
+        location.requestWhenInUseAuthorization()
         //location?.startUpdatingLocation()
         mapView.showsUserLocation = true
         
-        
         let address = "old capitol mall, Iowa city, USA"
-        let geocode = CLGeocoder()
-        var coordinates: CLLocationCoordinate2D?
         geocode.geocodeAddressString(address) { (location, error) in
             self.mapView.addAnnotation(MKPlacemark(placemark: (location?[0])!))
-            coordinates = location?[0].location!.coordinate
+            self.coordinates = location?[0].location!.coordinate
             
-            let center = CLLocationCoordinate2D(latitude: (coordinates?.latitude)!, longitude: (coordinates?.longitude)!)
+            let center = CLLocationCoordinate2D(latitude: (self.coordinates?.latitude)!, longitude: (self.coordinates?.longitude)!)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             self.mapView.setRegion(region, animated: true)
         }
@@ -62,25 +54,28 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var maxCountValue: UITextField!
     
     @IBAction func saveEvent(_ sender: UIButton) {
-        
-        let eventName = eventNameValue.text!
-        let eventLocation = locationValue.text!
-        let eventDescription = eventDescriptionValue.text!
-        let eventDateAndTime = dateAndTimeValue.text!
-        let eventMaxPeople = maxCountValue.text!
-        
-        //TODO: Use class constructor instead of separate variables
-        let post : [String : AnyObject] = ["eventName" : eventName as AnyObject,
-                                           "eventLocation" : eventLocation as AnyObject,
-                                           "eventDescription" : eventDescription as AnyObject,
-                                           "eventDateAndTime" : eventDateAndTime as AnyObject,
-                                           "eventMaxPeople" : eventMaxPeople as AnyObject]
-        
-        let databaseRef = FIRDatabase.database().reference()
-        databaseRef.child("events").childByAutoId().setValue(post)
-        
-        
-        
+        let address = self.locationValue.text!
+        geocode.geocodeAddressString(address) { (location, error) in
+            self.coordinates = location?[0].location!.coordinate
+            let eventName = self.eventNameValue.text!
+            let eventLocation = self.locationValue.text!
+            let eventDescription = self.eventDescriptionValue.text!
+            let eventDateAndTime = self.dateAndTimeValue.text!
+            let eventMaxPeople = self.maxCountValue.text!
+            let destLat = String((self.coordinates?.latitude)!)
+            let destLong =  String((self.coordinates?.longitude)!)
+            
+            //TODO: Use class constructor instead of separate variables
+            let post : [String : AnyObject] = ["eventName" : eventName as AnyObject,
+                                               "eventLocation" : eventLocation as AnyObject,
+                                               "eventDescription" : eventDescription as AnyObject,
+                                               "eventDateAndTime" : eventDateAndTime as AnyObject,
+                                               "eventMaxPeople" : eventMaxPeople as AnyObject,
+                                               "destLat": destLat as AnyObject,
+                                               "destLong": destLong as AnyObject]
+            
+            let databaseRef = FIRDatabase.database().reference()
+            databaseRef.child("events").childByAutoId().setValue(post)
+        }
     }
-    
 }
