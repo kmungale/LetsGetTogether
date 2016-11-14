@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC3E6E1D1DD9515300DB1502 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3E6E1C1DD9515300DB1502 /* EventDetailsViewController.swift */; };
 		CC467C181DD8122700F407F4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC467C171DD8122700F407F4 /* LoginViewController.swift */; };
 		CC467C1A1DD81A9000F407F4 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC467C191DD81A9000F407F4 /* AppState.swift */; };
 		CCD46E5E1DCB23B700E06F7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD46E5D1DCB23B700E06F7E /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		592402A6F024D35179C58412 /* Pods-letsGetTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-letsGetTogether.debug.xcconfig"; path = "Pods/Target Support Files/Pods-letsGetTogether/Pods-letsGetTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		9B45484C2C71443DFC5218FA /* Pods_letsGetTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_letsGetTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC3E6E1C1DD9515300DB1502 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		CC467C171DD8122700F407F4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CC467C191DD81A9000F407F4 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		CCD46E5A1DCB23B700E06F7E /* letsGetTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = letsGetTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,7 @@
 				CCD46E6B1DCB23B700E06F7E /* Info.plist */,
 				CC467C171DD8122700F407F4 /* LoginViewController.swift */,
 				CC467C191DD81A9000F407F4 /* AppState.swift */,
+				CC3E6E1C1DD9515300DB1502 /* EventDetailsViewController.swift */,
 			);
 			path = letsGetTogether;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				CC467C1A1DD81A9000F407F4 /* AppState.swift in Sources */,
 				CCD46E7A1DCB259C00E06F7E /* NewEventViewController.swift in Sources */,
 				CCD46E791DCB259C00E06F7E /* MyEventsViewController.swift in Sources */,
+				CC3E6E1D1DD9515300DB1502 /* EventDetailsViewController.swift in Sources */,
 				CCD46E5E1DCB23B700E06F7E /* AppDelegate.swift in Sources */,
 				CCD46E771DCB259C00E06F7E /* EventsListTableViewController.swift in Sources */,
 			);
