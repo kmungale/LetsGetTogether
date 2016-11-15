@@ -67,12 +67,15 @@
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EWA-fO-KrU">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="start typing to search location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EWA-fO-KrU">
                                 <frame key="frameInset" minX="42" minY="266" width="293" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="searchLocation:" destination="8rJ-Kc-sve" eventType="editingChanged" id="but-R4-jE9"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Maximum Count::" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCm-NB-6kp">
                                 <frame key="frameInset" minX="42" minY="525" width="153" height="30"/>
@@ -99,9 +102,14 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jug-pR-dwT">
-                                <frame key="frameInset" minX="42" minY="322" width="293" height="180"/>
+                                <frame key="frameInset" minX="42" minY="339" width="293" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fZU-mO-ZPb">
+                                <frame key="frameInset" minX="42" minY="297" width="291" height="184"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.84158667860000003" green="0.83515163690000005" blue="0.84313645290000006" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -110,10 +118,11 @@
                         <outlet property="dateAndTimeValue" destination="WBv-bp-EGl" id="IEh-hN-PPe"/>
                         <outlet property="eventDescriptionValue" destination="dCi-9m-xNY" id="6fc-Sh-mPe"/>
                         <outlet property="eventNameValue" destination="CDl-a7-oDK" id="G1o-cC-bd0"/>
+                        <outlet property="locationTable" destination="fZU-mO-ZPb" id="6LY-u7-9Ub"/>
                         <outlet property="locationValue" destination="EWA-fO-KrU" id="yr9-gC-WPv"/>
                         <outlet property="mapView" destination="jug-pR-dwT" id="N2m-Q3-XDi"/>
                         <outlet property="maxCountValue" destination="syR-zU-JB2" id="0aZ-PI-RVr"/>
-                        <outlet property="searchDisplayController" destination="yq6-Bq-Ou2" id="BoN-Wm-ExI"/>
+                        <outlet property="searchDisplayController" destination="3IA-6s-zbb" id="3hX-Xo-Z4N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -131,6 +140,30 @@
                         <outlet property="searchContentsController" destination="8rJ-Kc-sve" id="XXs-B6-aCQ"/>
                         <outlet property="searchResultsDataSource" destination="8rJ-Kc-sve" id="9bZ-SH-eda"/>
                         <outlet property="searchResultsDelegate" destination="8rJ-Kc-sve" id="Z8w-ts-aUi"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="MS5-3Z-EiF">
+                    <connections>
+                        <outlet property="delegate" destination="8rJ-Kc-sve" id="UIJ-3P-2kA"/>
+                        <outlet property="searchContentsController" destination="8rJ-Kc-sve" id="woC-Dq-O7C"/>
+                        <outlet property="searchResultsDataSource" destination="8rJ-Kc-sve" id="ke0-9s-9o9"/>
+                        <outlet property="searchResultsDelegate" destination="8rJ-Kc-sve" id="EA4-KE-C8n"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="UAk-tU-xo2">
+                    <connections>
+                        <outlet property="delegate" destination="8rJ-Kc-sve" id="s2X-E6-JxW"/>
+                        <outlet property="searchContentsController" destination="8rJ-Kc-sve" id="bJw-Av-91N"/>
+                        <outlet property="searchResultsDataSource" destination="8rJ-Kc-sve" id="OjB-MT-hQy"/>
+                        <outlet property="searchResultsDelegate" destination="8rJ-Kc-sve" id="6rb-Q2-hYD"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="3IA-6s-zbb">
+                    <connections>
+                        <outlet property="delegate" destination="8rJ-Kc-sve" id="h5f-c6-MTw"/>
+                        <outlet property="searchContentsController" destination="8rJ-Kc-sve" id="rJX-3t-LyR"/>
+                        <outlet property="searchResultsDataSource" destination="8rJ-Kc-sve" id="gMi-V7-qNJ"/>
+                        <outlet property="searchResultsDelegate" destination="8rJ-Kc-sve" id="gpW-5x-TDM"/>
                     </connections>
                 </searchDisplayController>
             </objects>
@@ -457,7 +490,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gY8-st-GC7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="List" image="list" selectedImage="list" id="mjP-Zj-mKQ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="g6X-zv-GVA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="g6X-zv-GVA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">

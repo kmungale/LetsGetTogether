@@ -12,14 +12,60 @@ import CoreLocation
 import Firebase
 import FirebaseDatabase
 
-class NewEventViewController: UIViewController, CLLocationManagerDelegate {
+struct Data {
+    var name: String
+}
+
+class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var ref: FIRDatabaseReference!
     var dataStorage: UserDefaults?
-    var x =  [Event]()
     var location = CLLocationManager()
     let geocode = CLGeocoder()
     var coordinates: CLLocationCoordinate2D?
+    var availableLocations = [MKMapItem]()
+
+    //Programmatic implementing table view
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.availableLocations.count
+    }
+    
+    // create a cell for each table view row
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // cell reuse id (cells that scroll out of view can be reused)
+        let cellReuseIdentifier = "cell"
+        // create a new cell if needed or reuse an old one
+        let cell:UITableViewCell = self.locationTable.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
+        // set the text from the data model
+        cell.textLabel?.text = self.availableLocations[indexPath.row].name
+        
+        return cell
+    }
+    
+    // method to run when table view cell is tapped
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You tapped cell number \(indexPath.row).")
+        let selectedLocation = availableLocations[indexPath.row].name
+        geocode.geocodeAddressString(selectedLocation!) { (location, error) in
+            if((error) != nil || location == nil) {
+                let errroAlert = UIAlertController(title: "Invalid Location", message: "Please enter valid location", preferredStyle: UIAlertControllerStyle.alert)
+                errroAlert.addAction(UIAlertAction(title: "Dimiss", style: UIAlertActionStyle.default, handler: nil))
+                self.present(errroAlert, animated: true, completion: nil)
+                return
+            }
+            let center = CLLocationCoordinate2D(latitude: (location?[0].location!.coordinate.latitude)!, longitude: (location?[0].location!.coordinate.longitude)!)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            self.mapView.setRegion(region, animated: true)
+            self.mapView.addAnnotation(MKPlacemark(coordinate: center))
+            self.locationValue.text = selectedLocation!
+        }
+        locationTable.alpha = 0
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,21 +75,46 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate {
         //location?.startUpdatingLocation()
         mapView.showsUserLocation = true
         
-        let address = "old capitol mall, Iowa city, USA"
+        //Programmatic Table view for locations//
+        self.locationTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.locationTable.delegate = self
+        self.locationTable.dataSource = self
+        self.locationTable.alpha = 0
+        
+        //.......mapping address
+        let address = "1305 sunset street, iowa city"
         geocode.geocodeAddressString(address) { (location, error) in
-            self.mapView.addAnnotation(MKPlacemark(placemark: (location?[0])!))
+            //self.mapView.addAnnotation(MKPlacemark(placemark: (location?[0])!))
             self.coordinates = location?[0].location!.coordinate
             
             let center = CLLocationCoordinate2D(latitude: (self.coordinates?.latitude)!, longitude: (self.coordinates?.longitude)!)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             self.mapView.setRegion(region, animated: true)
         }
-        // Do any additional setup after loading the view.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+   
+    @IBOutlet weak var locationTable: UITableView!
+    
+    @IBAction func searchLocation(_ sender: UITextField) {
+        let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = self.locationValue.text!
+        //request.region = self.mapView.region
+        let search = MKLocalSearch(request: request)
+        search.start { response, _ in
+            guard let response = response else {
+                return
+            }
+            self.locationTable.alpha = 1
+            self.availableLocations = response.mapItems
+            self.locationTable.reloadData()
+        }
     }
     
     @IBOutlet weak var mapView: MKMapView!
@@ -78,4 +149,5 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate {
             databaseRef.child("events").childByAutoId().setValue(post)
         }
     }
+    
 }
