@@ -10,8 +10,12 @@ import Foundation
 
 class AppState: NSObject {
     
-    static let sharedInstance = AppState()
+    static var sharedInstance = AppState()
     
     var signedIn = false
     var displayName: String?
+    var firstName: String?
+    var lastName: String?
+    var email: String?
+    var uid: String?
 }

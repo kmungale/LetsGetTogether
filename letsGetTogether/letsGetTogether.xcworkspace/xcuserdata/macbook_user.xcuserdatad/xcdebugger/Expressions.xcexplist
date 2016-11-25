@@ -8,16 +8,30 @@
             <PersistentString
                value = "currentLocation.coordinate.longitude">
             </PersistentString>
+            <PersistentString
+               value = "AppState">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "EventsListTableViewController.prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ():EventsListTableViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "NewEventViewController.(locationUpdated(UITextField) -&gt; ()).(closure #1).(closure #1):NewEventViewController.swift">
+         contextName = "NewEventViewController.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:NewEventViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "response">
+               value = "self.availableLocations.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoginViewController.signedIn(FIRUser?) -&gt; ():LoginViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "databaseRef.child(&quot;users&quot;).child(uid).value">
+            </PersistentString>
+            <PersistentString
+               value = "databaseRef.child(&quot;users&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -30,6 +44,36 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "EventsListTableViewController.(locationManager(CLLocationManager, didUpdateLocations : [CLLocation]) -&gt; ()).(closure #1):EventsListTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "AppState.sharedInstance.displayEmail">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoginViewController.(signedIn(FIRUser?) -&gt; ()).(closure #1):LoginViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "AppState.sharedInstance.uid">
+            </PersistentString>
+            <PersistentString
+               value = "value.key">
+            </PersistentString>
+            <PersistentString
+               value = "snapshot.key">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoginViewController.(signedIn(FIRUser?) -&gt; ()).(closure #1).(closure #1):LoginViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "AppState.sharedInstance.firstName">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "NewEventViewController.(locationUpdated(UITextField) -&gt; ()).(closure #1):NewEventViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -38,10 +82,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NewEventViewController.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:NewEventViewController.swift">
+         contextName = "NewEventViewController.(locationUpdated(UITextField) -&gt; ()).(closure #1).(closure #1):NewEventViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.availableLocations.count">
+               value = "response">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

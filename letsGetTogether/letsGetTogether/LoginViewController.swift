@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Foundation
+import FirebaseDatabase
 
 struct Segues {
     static let SignInToMain = "SignInToMain"
@@ -18,11 +19,19 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var passWord: UITextField!
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var firstNameInput: UITextField!
+    @IBOutlet weak var lastNameInput: UITextField!
     
     override func viewDidAppear(_ animated: Bool) {
         if let user = FIRAuth.auth()?.currentUser {
             self.signedIn(user)
         }
+        self.firstNameInput.alpha = 0
+        self.firstNameLabel.alpha = 0
+        self.lastNameInput.alpha = 0
+        self.lastNameLabel.alpha = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +41,14 @@ class LoginViewController: UIViewController {
     
     @IBAction func Login(_ sender: UIButton) {
         // Sign In with credentials.
+        if self.firstNameInput.alpha == 1 {
+            self.firstNameInput.alpha = 0
+            self.firstNameLabel.alpha = 0
+            self.lastNameInput.alpha = 0
+            self.lastNameLabel.alpha = 0
+            return
+        }
+        
         guard let email = userName.text, let password = passWord.text else { return }
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
             if let error = error {
@@ -43,6 +60,13 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func signUp(_ sender: UIButton) {
+        if self.firstNameInput.alpha == 0 {
+            self.firstNameInput.alpha = 1
+            self.firstNameLabel.alpha = 1
+            self.lastNameInput.alpha = 1
+            self.lastNameLabel.alpha = 1
+            return
+        }
         guard let email = userName.text, let password = passWord.text else { return }
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
             if let error = error {
@@ -88,10 +112,38 @@ class LoginViewController: UIViewController {
     }
     
     func signedIn(_ user: FIRUser?) {
-        
         AppState.sharedInstance.displayName = user?.displayName ?? user?.email
         AppState.sharedInstance.signedIn = true
+        
+        let uid = (user?.uid)!;
+        let databaseRef = FIRDatabase.database().reference()
+        
+        databaseRef.child("users").observe(.value, with: {snapshot in
+            if snapshot.hasChild(uid) {
+                databaseRef.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                    // Get user value
+                    let value = snapshot.value as? NSDictionary
+                    print("User is already existing !!!!")
+                    AppState.sharedInstance.uid = value?["uid"] as? String ?? ""
+                    AppState.sharedInstance.firstName = value?["firstName"] as? String ?? ""
+                    AppState.sharedInstance.lastName = value?["lastName"] as? String ?? ""
+                    AppState.sharedInstance.email = value?["email"] as? String ?? ""
+                })
+            } else {
+                print("User is not existing and hence creating a new user !!!!")
+                let post : [String : AnyObject] = ["uid" : uid as AnyObject,
+                                                   "firstName" : (self.firstNameInput.text)! as AnyObject,
+                                                   "lastName" : (self.lastNameInput.text)! as AnyObject,
+                                                   "email" : (user?.email)! as AnyObject]
+                AppState.sharedInstance.uid = uid
+                AppState.sharedInstance.firstName = self.firstNameInput.text!
+                AppState.sharedInstance.lastName = self.lastNameInput.text!
+                AppState.sharedInstance.email = (user?.email)!
+                databaseRef.child("users").child(uid).setValue(post)
+            }
+        })
         performSegue(withIdentifier: Segues.SignInToMain, sender: nil)
+        //databaseRef.child("users").child(uid).setValue(post)
     }
 
     

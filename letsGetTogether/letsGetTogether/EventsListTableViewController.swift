@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import CoreLocation
+import Foundation
 
 class EventsListTableViewController: UITableViewController, CLLocationManagerDelegate {
 
@@ -54,7 +55,7 @@ class EventsListTableViewController: UITableViewController, CLLocationManagerDel
             let destLong = (snapshot.value! as? [String : String])?["destLong"]
             let destDistance = self.currentLocation?.distance(from: CLLocation(latitude: CLLocationDegrees(destLat!)!, longitude: CLLocationDegrees(destLong!)! ))
             
-            self.events.insert(Event(name: eventName!, description: eventDescription!, dateAndTime: eventDateAndTime!, mapLocation: eventLocation!, maxCount: eventMaxPeople!, distance: String(Int(destDistance!)/1000), dLat: destLat!, dLong: destLong!), at: 0)
+            self.events.insert(Event(name: eventName!, description: eventDescription!, dateAndTime: eventDateAndTime!, mapLocation: eventLocation!, maxCount: eventMaxPeople!, distance: String(Int(destDistance!)/1000), dLat: destLat!, dLong: destLong!, key: snapshot.key), at: 0)
             self.tableView.reloadData()
         })
         locationCount = locationCount! + 1
@@ -105,6 +106,7 @@ class EventsListTableViewController: UITableViewController, CLLocationManagerDel
         let indexPath = tableView.indexPathForSelectedRow
         let selectedEvent = events[(indexPath?.row)!]
         detailsController.selectedEvent = selectedEvent
+        detailsController.selectedEventKey = selectedEvent.key
         print(selectedEvent);
     }
 

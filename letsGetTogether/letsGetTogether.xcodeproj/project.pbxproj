@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC3425951DE6749A00A6D49D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3425941DE6749A00A6D49D /* User.swift */; };
+		CC3425971DE7E1A500A6D49D /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3425961DE7E1A500A6D49D /* UserProfileViewController.swift */; };
 		CC3E6E1D1DD9515300DB1502 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3E6E1C1DD9515300DB1502 /* EventDetailsViewController.swift */; };
 		CC467C181DD8122700F407F4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC467C171DD8122700F407F4 /* LoginViewController.swift */; };
 		CC467C1A1DD81A9000F407F4 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC467C191DD81A9000F407F4 /* AppState.swift */; };
@@ -27,6 +29,8 @@
 /* Begin PBXFileReference section */
 		592402A6F024D35179C58412 /* Pods-letsGetTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-letsGetTogether.debug.xcconfig"; path = "Pods/Target Support Files/Pods-letsGetTogether/Pods-letsGetTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		9B45484C2C71443DFC5218FA /* Pods_letsGetTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_letsGetTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC3425941DE6749A00A6D49D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CC3425961DE7E1A500A6D49D /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		CC3E6E1C1DD9515300DB1502 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		CC467C171DD8122700F407F4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CC467C191DD81A9000F407F4 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			children = (
 				CCD61D6F1DD513510078AC80 /* letsGetTogether.entitlements */,
 				CCD61D6D1DD4572D0078AC80 /* GoogleService-Info.plist */,
+				CC3425941DE6749A00A6D49D /* User.swift */,
 				CCD46E711DCB259C00E06F7E /* Event.swift */,
 				CCD46E721DCB259C00E06F7E /* EventsListTableViewController.swift */,
 				CCD46E731DCB259C00E06F7E /* EventTableViewCell.swift */,
@@ -113,6 +118,7 @@
 				CC467C171DD8122700F407F4 /* LoginViewController.swift */,
 				CC467C191DD81A9000F407F4 /* AppState.swift */,
 				CC3E6E1C1DD9515300DB1502 /* EventDetailsViewController.swift */,
+				CC3425961DE7E1A500A6D49D /* UserProfileViewController.swift */,
 			);
 			path = letsGetTogether;
 			sourceTree = "<group>";
@@ -259,6 +265,8 @@
 				CCD46E791DCB259C00E06F7E /* MyEventsViewController.swift in Sources */,
 				CC3E6E1D1DD9515300DB1502 /* EventDetailsViewController.swift in Sources */,
 				CCD46E5E1DCB23B700E06F7E /* AppDelegate.swift in Sources */,
+				CC3425951DE6749A00A6D49D /* User.swift in Sources */,
+				CC3425971DE7E1A500A6D49D /* UserProfileViewController.swift in Sources */,
 				CCD46E771DCB259C00E06F7E /* EventsListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,7 @@ import MapKit
 
 class EventDetailsViewController: UIViewController {
     var selectedEvent: Event!
+    var selectedEventKey: String?
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateTimeLabel: UILabel!

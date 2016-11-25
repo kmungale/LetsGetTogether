@@ -18,8 +18,9 @@ class Event {
     var eventDistance: String
     var destLat: String
     var destLong: String
+    var key: String
     
-    init(name: String, description: String, dateAndTime: String, mapLocation: String, maxCount: String, distance: String, dLat: String, dLong: String) {
+    init(name: String, description: String, dateAndTime: String, mapLocation: String, maxCount: String, distance: String, dLat: String, dLong: String, key: String) {
         self.eventName = name
         self.eventDescription = description
         self.dateAndTime = dateAndTime
@@ -28,5 +29,6 @@ class Event {
         self.eventDistance = distance
         self.destLat = dLat
         self.destLong = dLong
+        self.key = key
     }
 }

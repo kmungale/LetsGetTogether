@@ -106,6 +106,7 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = self.locationValue.text!
         //request.region = self.mapView.region
+        request.region = MKCoordinateRegionMakeWithDistance((self.mapView.userLocation.location?.coordinate)!, 12000000, 12000000)
         let search = MKLocalSearch(request: request)
         search.start { response, _ in
             guard let response = response else {
