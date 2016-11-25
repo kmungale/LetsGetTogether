@@ -11,15 +11,39 @@ import MapKit
 import Foundation
 import Firebase
 
-class EventDetailsViewController: UIViewController {
+struct Comment{
+    
+    let name : String!
+    let comment : String!
+    
+}
+
+class EventDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var selectedEvent: Event!
     var selectedEventKey: String?
+    var comments = [Comment]()
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var interestedImage: UIImageView!
+    @IBOutlet weak var commentInput: UITextField!
+    @IBOutlet weak var userComments: UITableView!
+    
+    @IBAction func saveComment(_ sender: UIButton) {
+        
+        let userComment = self.commentInput.text!
+        let userName = AppState.sharedInstance.firstName!
+        let postComment : [String : AnyObject] = ["userComment" : userComment as AnyObject,
+                                                  "userName" : userName as AnyObject]
+        
+        let databaseRef = FIRDatabase.database().reference()
+        let childRef = databaseRef.child("events")
+        let childRef1 = childRef.child(selectedEventKey!)
+        childRef1.child("comments").childByAutoId().setValue(postComment)
+        
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         if AppState.sharedInstance.interestedEvents.contains((selectedEventKey)!) {
@@ -47,11 +71,42 @@ class EventDetailsViewController: UIViewController {
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(region, animated: true)
         mapView.addAnnotation(MKPlacemark(coordinate: center))
+        
+        let databaseRef = FIRDatabase.database().reference()
+        let childRef = databaseRef.child("events")
+        let childRef1 = childRef.child(selectedEventKey!)
+        childRef1.child("comments").queryOrderedByKey().observe(.childAdded, with: {snapshot in
+            let value = snapshot.value as? NSDictionary
+            let name = value?["userName"] as? String ?? ""
+            let comment = value?["userComment"] as? String ?? ""
+            self.comments.insert(Comment(name: name, comment: comment), at: 0)
+            self.userComments.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return comments.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "CommentTableViewCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CommentTableViewCell
+        let name = comments[indexPath.row].name
+        let comment = comments[indexPath.row].comment
+        
+        cell.comment?.text = name! + ": " + comment!
+        
+        return cell
     }
     
     func tapInterestedImage() {

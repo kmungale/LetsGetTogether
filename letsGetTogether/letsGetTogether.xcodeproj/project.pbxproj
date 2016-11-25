@@ -12,6 +12,7 @@
 		CC3E6E1D1DD9515300DB1502 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3E6E1C1DD9515300DB1502 /* EventDetailsViewController.swift */; };
 		CC467C181DD8122700F407F4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC467C171DD8122700F407F4 /* LoginViewController.swift */; };
 		CC467C1A1DD81A9000F407F4 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC467C191DD81A9000F407F4 /* AppState.swift */; };
+		CC467C241DE8459300F407F4 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC467C231DE8459300F407F4 /* CommentTableViewCell.swift */; };
 		CCD46E5E1DCB23B700E06F7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD46E5D1DCB23B700E06F7E /* AppDelegate.swift */; };
 		CCD46E651DCB23B700E06F7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCD46E631DCB23B700E06F7E /* Main.storyboard */; };
 		CCD46E671DCB23B700E06F7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCD46E661DCB23B700E06F7E /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		CC3E6E1C1DD9515300DB1502 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		CC467C171DD8122700F407F4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CC467C191DD81A9000F407F4 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		CC467C231DE8459300F407F4 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		CCD46E5A1DCB23B700E06F7E /* letsGetTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = letsGetTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD46E5D1DCB23B700E06F7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCD46E641DCB23B700E06F7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				CC467C171DD8122700F407F4 /* LoginViewController.swift */,
 				CC467C191DD81A9000F407F4 /* AppState.swift */,
 				CC3E6E1C1DD9515300DB1502 /* EventDetailsViewController.swift */,
+				CC467C231DE8459300F407F4 /* CommentTableViewCell.swift */,
 				CC3425961DE7E1A500A6D49D /* UserProfileViewController.swift */,
 			);
 			path = letsGetTogether;
@@ -264,6 +267,7 @@
 				CCD46E7A1DCB259C00E06F7E /* NewEventViewController.swift in Sources */,
 				CCD46E791DCB259C00E06F7E /* MyEventsViewController.swift in Sources */,
 				CC3E6E1D1DD9515300DB1502 /* EventDetailsViewController.swift in Sources */,
+				CC467C241DE8459300F407F4 /* CommentTableViewCell.swift in Sources */,
 				CCD46E5E1DCB23B700E06F7E /* AppDelegate.swift in Sources */,
 				CC3425951DE6749A00A6D49D /* User.swift in Sources */,
 				CC3425971DE7E1A500A6D49D /* UserProfileViewController.swift in Sources */,
