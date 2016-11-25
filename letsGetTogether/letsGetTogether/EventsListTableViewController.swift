@@ -46,16 +46,18 @@ class EventsListTableViewController: UITableViewController, CLLocationManagerDel
         }
         let databaseRef = FIRDatabase.database().reference()
         databaseRef.child("events").queryOrderedByKey().observe(.childAdded, with: {snapshot in
-            let eventName = (snapshot.value! as? [String : String])?["eventName"]
-            let eventLocation = (snapshot.value! as? [String : String])?["eventLocation"]
-            let eventDescription = (snapshot.value! as? [String : String])?["eventDescription"]
-            let eventDateAndTime = (snapshot.value! as? [String : String])?["eventDateAndTime"]
-            let eventMaxPeople = (snapshot.value! as? [String : String])?["eventMaxPeople"]
-            let destLat = (snapshot.value! as? [String : String])?["destLat"]
-            let destLong = (snapshot.value! as? [String : String])?["destLong"]
-            let destDistance = self.currentLocation?.distance(from: CLLocation(latitude: CLLocationDegrees(destLat!)!, longitude: CLLocationDegrees(destLong!)! ))
+            let value = snapshot.value as? NSDictionary
             
-            self.events.insert(Event(name: eventName!, description: eventDescription!, dateAndTime: eventDateAndTime!, mapLocation: eventLocation!, maxCount: eventMaxPeople!, distance: String(Int(destDistance!)/1000), dLat: destLat!, dLong: destLong!, key: snapshot.key), at: 0)
+            let eventName = value?["eventName"] as? String ?? ""
+            let eventLocation = value?["eventLocation"] as? String ?? ""
+            let eventDescription = value?["eventDescription"] as? String ?? ""
+            let eventDateAndTime = value?["eventDateAndTime"] as? String ?? ""
+            let eventMaxPeople = value?["eventMaxPeople"] as? String ?? ""
+            let destLat = value?["destLat"] as? String ?? ""
+            let destLong = value?["destLong"] as? String ?? ""
+            let destDistance = self.currentLocation?.distance(from: CLLocation(latitude: CLLocationDegrees(destLat)!, longitude: CLLocationDegrees(destLong)! ))
+            
+            self.events.insert(Event(name: eventName, description: eventDescription, dateAndTime: eventDateAndTime, mapLocation: eventLocation, maxCount: eventMaxPeople, distance: String(Int(destDistance!)/1000), dLat: destLat, dLong: destLong, key: snapshot.key), at: 0)
             self.tableView.reloadData()
         })
         locationCount = locationCount! + 1

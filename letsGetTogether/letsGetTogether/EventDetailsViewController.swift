@@ -8,6 +8,8 @@
 
 import UIKit
 import MapKit
+import Foundation
+import Firebase
 
 class EventDetailsViewController: UIViewController {
     var selectedEvent: Event!
@@ -17,9 +19,24 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var interestedImage: UIImageView!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if AppState.sharedInstance.interestedEvents.contains((selectedEventKey)!) {
+            interestedImage.accessibilityIdentifier = "y"
+            self.interestedImage.image = UIImage(named: "interested")
+        } else {
+            interestedImage.accessibilityIdentifier = "n"
+            self.interestedImage.image = UIImage(named: "notInterested")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapInterestedImage))
+        interestedImage.addGestureRecognizer(tap)
+        interestedImage.isUserInteractionEnabled = true
+        
         eventNameLabel.text = selectedEvent.eventName
         descriptionLabel.text = selectedEvent.eventDescription
         dateTimeLabel.text = selectedEvent.dateAndTime
@@ -37,6 +54,24 @@ class EventDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func tapInterestedImage() {
+        let databaseRef = FIRDatabase.database().reference()
+        
+        if self.interestedImage.accessibilityIdentifier == "n" {
+            self.interestedImage.image = UIImage(named: "interested")
+            self.interestedImage.accessibilityIdentifier = "y"
+            AppState.sharedInstance.interestedEvents.append(selectedEventKey!)
+            databaseRef.child("users").child(AppState.sharedInstance.uid!).updateChildValues(["interestedEvents": AppState.sharedInstance.interestedEvents])
+        }
+        else {
+            let eventIndex = AppState.sharedInstance.interestedEvents.index(of: selectedEventKey!)
+            AppState.sharedInstance.interestedEvents.remove(at: (eventIndex)!)
+            databaseRef.child("users").child(AppState.sharedInstance.uid!).updateChildValues(["interestedEvents": AppState.sharedInstance.interestedEvents])
+            self.interestedImage.image = UIImage(named: "notInterested")
+            self.interestedImage.accessibilityIdentifier = "n"
+        }
+        
+    }
 
     /*
     // MARK: - Navigation

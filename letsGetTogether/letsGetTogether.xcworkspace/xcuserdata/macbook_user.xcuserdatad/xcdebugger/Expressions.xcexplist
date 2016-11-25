@@ -36,6 +36,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "EventDetailsViewController.tapInterestedImage() -&gt; ():EventDetailsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "AppState.sharedInstance.uid!">
+            </PersistentString>
+            <PersistentString
+               value = "AppState.sharedInstance.interestedEvents">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "EventsListTableViewController.configureDatabase() -&gt; ():EventsListTableViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -47,7 +58,7 @@
          contextName = "EventsListTableViewController.(locationManager(CLLocationManager, didUpdateLocations : [CLLocation]) -&gt; ()).(closure #1):EventsListTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "AppState.sharedInstance.displayEmail">
+               value = "snapshot.value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

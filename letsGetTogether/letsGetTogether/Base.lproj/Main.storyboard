@@ -429,6 +429,17 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="notInterested" translatesAutoresizingMaskIntoConstraints="NO" id="RRe-6o-Pre">
+                                <frame key="frameInset" minX="129" minY="423" width="33" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to set Interest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lu3-yE-5LP">
+                                <frame key="frameInset" minX="170" minY="423" width="158" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.84158667860000003" green="0.83515163690000005" blue="0.84313645290000006" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -437,13 +448,14 @@
                         <outlet property="dateTimeLabel" destination="ALd-kV-Tqj" id="7HQ-Zm-EOB"/>
                         <outlet property="descriptionLabel" destination="ixX-aB-UUQ" id="1QN-aa-Nzs"/>
                         <outlet property="eventNameLabel" destination="seO-Sp-BZg" id="PVg-Ou-kUh"/>
+                        <outlet property="interestedImage" destination="RRe-6o-Pre" id="xyY-qn-sPJ"/>
                         <outlet property="locationLabel" destination="CUC-5O-hEq" id="8ej-vy-nHq"/>
                         <outlet property="mapView" destination="5Rs-dB-vPw" id="qcZ-T3-Kh2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VzJ-sG-y0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1351" y="2359"/>
+            <point key="canvasLocation" x="-1351.2" y="2358.170914542729"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="get-Cd-8yy">
@@ -659,6 +671,7 @@
         <image name="list" width="34" height="35"/>
         <image name="my events" width="34" height="35"/>
         <image name="new event" width="34" height="35"/>
+        <image name="notInterested" width="2000" height="2000"/>
         <image name="user" width="34" height="35"/>
     </resources>
 </document>

@@ -18,4 +18,5 @@ class AppState: NSObject {
     var lastName: String?
     var email: String?
     var uid: String?
+    var interestedEvents: [String] = []
 }

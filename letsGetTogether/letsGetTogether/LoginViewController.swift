@@ -128,13 +128,15 @@ class LoginViewController: UIViewController {
                     AppState.sharedInstance.firstName = value?["firstName"] as? String ?? ""
                     AppState.sharedInstance.lastName = value?["lastName"] as? String ?? ""
                     AppState.sharedInstance.email = value?["email"] as? String ?? ""
+                    AppState.sharedInstance.interestedEvents = value?["interestedEvents"] as? [String] ?? []
                 })
             } else {
                 print("User is not existing and hence creating a new user !!!!")
                 let post : [String : AnyObject] = ["uid" : uid as AnyObject,
                                                    "firstName" : (self.firstNameInput.text)! as AnyObject,
                                                    "lastName" : (self.lastNameInput.text)! as AnyObject,
-                                                   "email" : (user?.email)! as AnyObject]
+                                                   "email" : (user?.email)! as AnyObject,
+                                                   "interestedEvents": [] as AnyObject]
                 AppState.sharedInstance.uid = uid
                 AppState.sharedInstance.firstName = self.firstNameInput.text!
                 AppState.sharedInstance.lastName = self.lastNameInput.text!
