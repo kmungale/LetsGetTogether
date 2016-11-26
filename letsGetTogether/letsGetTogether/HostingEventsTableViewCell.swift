@@ -21,9 +21,19 @@ class HostingEventsTableViewCell: UITableViewCell {
     @IBOutlet weak var eventDateTimeLabel: UILabel!
     
     @IBAction func deleteEventClick(_ sender: UIButton) {
-        print(sender.tag)
-        self.tableReference?.myHostedEvents.remove(at: sender.tag)
+        let deletedEvent: Event?
+        var deletedEventIndexFromAll: Int?
+        deletedEvent = self.tableReference?.myHostedEvents.remove(at: sender.tag)
         self.tableReference?.hostingEventsTable.reloadData()
+        for (index,event) in (self.tableReference?.allEvents.enumerated())! {
+            if event.key == deletedEvent?.key{
+                deletedEventIndexFromAll = index
+            }
+        }
+        self.tableReference?.allEvents.remove(at: deletedEventIndexFromAll!)
+        let databaseRef = FIRDatabase.database().reference()
+        databaseRef.child("events").updateChildValues([(deletedEvent?.key)! : NSNull()])
+        
     }
     override func awakeFromNib() {
         super.awakeFromNib()

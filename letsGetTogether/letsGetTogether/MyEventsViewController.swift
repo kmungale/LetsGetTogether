@@ -15,6 +15,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var myHostedEvents = [Event]()
     var interestedEvents = [Event]()
+    var allEvents = [Event]()
     @IBOutlet weak var hostingEventsTable: UITableView!
     @IBOutlet weak var interestedEventsTable: UITableView!
     
@@ -83,6 +84,8 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
             let createdBy =  value?["createdBy"] as? String ?? ""
             let peopleGoing = value?["peopleGoing"] as? String ?? ""
             let uid = value?["uid"] as? String ?? ""
+            
+            self.allEvents.insert(Event(name: eventName, description: eventDescription, dateAndTime: eventDateAndTime, mapLocation: eventLocation, maxCount: eventMaxPeople, distance: "", dLat: destLat, dLong: destLong, key: snapshot.key, createdBy: createdBy, peopleGoing: peopleGoing, uid: uid), at: 0)
             
             if userID == (AppState.sharedInstance.uid)! {
                 self.myHostedEvents.insert(Event(name: eventName, description: eventDescription, dateAndTime: eventDateAndTime, mapLocation: eventLocation, maxCount: eventMaxPeople, distance: "", dLat: destLat, dLong: destLong, key: snapshot.key, createdBy: createdBy, peopleGoing: peopleGoing, uid: uid), at: 0)

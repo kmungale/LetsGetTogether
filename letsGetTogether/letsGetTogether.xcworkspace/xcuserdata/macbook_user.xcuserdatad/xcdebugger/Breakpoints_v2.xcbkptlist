@@ -9,61 +9,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "letsGetTogether/EventsListTableViewController.swift"
-            timestampString = "501840879.9421"
+            filePath = "letsGetTogether/HostingEventsTableViewCell.swift"
+            timestampString = "501845229.331798"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "deleteEventClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "letsGetTogether/EventsListTableViewController.swift"
-            timestampString = "501840911.611834"
+            filePath = "letsGetTogether/HostingEventsTableViewCell.swift"
+            timestampString = "501845303.549695"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "letsGetTogether/EventsListTableViewController.swift"
-            timestampString = "501841483.346545"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "letsGetTogether/EventsListTableViewController.swift"
-            timestampString = "501841540.302705"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "deleteEventClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

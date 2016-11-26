@@ -6,6 +6,9 @@
          contextName = "HostingEventsTableViewCell.deleteEventClick(UIButton) -&gt; ():HostingEventsTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
+               value = "self.tableReference?.allEvents">
+            </PersistentString>
+            <PersistentString
                value = "sender.tag">
             </PersistentString>
          </PersistentStrings>
