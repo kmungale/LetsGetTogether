@@ -151,6 +151,12 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
             
             let databaseRef = FIRDatabase.database().reference()
             databaseRef.child("events").childByAutoId().setValue(post)
+            
+            self.eventNameValue.text = ""
+            self.eventDescriptionValue.text = ""
+            self.locationValue.text = ""
+            self.dateAndTimeValue.text = ""
+            self.maxCountValue.text = ""
         }
     }
     
