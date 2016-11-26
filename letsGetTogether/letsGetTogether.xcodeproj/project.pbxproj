@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CC3425951DE6749A00A6D49D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3425941DE6749A00A6D49D /* User.swift */; };
 		CC3425971DE7E1A500A6D49D /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3425961DE7E1A500A6D49D /* UserProfileViewController.swift */; };
+		CC3425991DE92DFD00A6D49D /* HostingEventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3425981DE92DFD00A6D49D /* HostingEventsTableViewCell.swift */; };
 		CC3E6E1D1DD9515300DB1502 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3E6E1C1DD9515300DB1502 /* EventDetailsViewController.swift */; };
 		CC467C181DD8122700F407F4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC467C171DD8122700F407F4 /* LoginViewController.swift */; };
 		CC467C1A1DD81A9000F407F4 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC467C191DD81A9000F407F4 /* AppState.swift */; };
@@ -32,6 +33,7 @@
 		9B45484C2C71443DFC5218FA /* Pods_letsGetTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_letsGetTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC3425941DE6749A00A6D49D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CC3425961DE7E1A500A6D49D /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		CC3425981DE92DFD00A6D49D /* HostingEventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostingEventsTableViewCell.swift; sourceTree = "<group>"; };
 		CC3E6E1C1DD9515300DB1502 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		CC467C171DD8122700F407F4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CC467C191DD81A9000F407F4 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				CC3E6E1C1DD9515300DB1502 /* EventDetailsViewController.swift */,
 				CC467C231DE8459300F407F4 /* CommentTableViewCell.swift */,
 				CC3425961DE7E1A500A6D49D /* UserProfileViewController.swift */,
+				CC3425981DE92DFD00A6D49D /* HostingEventsTableViewCell.swift */,
 			);
 			path = letsGetTogether;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				CC467C181DD8122700F407F4 /* LoginViewController.swift in Sources */,
 				CCD46E781DCB259C00E06F7E /* EventTableViewCell.swift in Sources */,
 				CCD46E761DCB259C00E06F7E /* Event.swift in Sources */,
+				CC3425991DE92DFD00A6D49D /* HostingEventsTableViewCell.swift in Sources */,
 				CC467C1A1DD81A9000F407F4 /* AppState.swift in Sources */,
 				CCD46E7A1DCB259C00E06F7E /* NewEventViewController.swift in Sources */,
 				CCD46E791DCB259C00E06F7E /* MyEventsViewController.swift in Sources */,

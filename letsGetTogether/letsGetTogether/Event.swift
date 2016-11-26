@@ -19,8 +19,11 @@ class Event {
     var destLat: String
     var destLong: String
     var key: String
+    var createdBy: String
+    var peopleGoing: String
+    var uid: String
     
-    init(name: String, description: String, dateAndTime: String, mapLocation: String, maxCount: String, distance: String, dLat: String, dLong: String, key: String) {
+    init(name: String, description: String, dateAndTime: String, mapLocation: String, maxCount: String, distance: String, dLat: String, dLong: String, key: String, createdBy: String, peopleGoing: String, uid: String) {
         self.eventName = name
         self.eventDescription = description
         self.dateAndTime = dateAndTime
@@ -29,6 +32,9 @@ class Event {
         self.eventDistance = distance
         self.destLat = dLat
         self.destLong = dLong
+        self.createdBy = createdBy
+        self.peopleGoing = peopleGoing
         self.key = key
+        self.uid = uid
     }
 }

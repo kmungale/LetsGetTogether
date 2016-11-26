@@ -144,7 +144,10 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
                                                "eventDateAndTime" : eventDateAndTime as AnyObject,
                                                "eventMaxPeople" : eventMaxPeople as AnyObject,
                                                "destLat": destLat as AnyObject,
-                                               "destLong": destLong as AnyObject]
+                                               "destLong": destLong as AnyObject,
+                                               "createdBy": (AppState.sharedInstance.firstName! + " " + AppState.sharedInstance.lastName!) as AnyObject,
+                                               "peopleGoing": 0 as AnyObject,
+                                               "uid": (AppState.sharedInstance.uid)! as AnyObject]
             
             let databaseRef = FIRDatabase.database().reference()
             databaseRef.child("events").childByAutoId().setValue(post)

@@ -12,10 +12,8 @@ import Foundation
 import Firebase
 
 struct Comment{
-    
     let name : String!
     let comment : String!
-    
 }
 
 class EventDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -30,6 +28,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var interestedImage: UIImageView!
     @IBOutlet weak var commentInput: UITextField!
     @IBOutlet weak var userComments: UITableView!
+    @IBOutlet weak var createdByLabel: UILabel!
     
     @IBAction func saveComment(_ sender: UIButton) {
         
@@ -65,6 +64,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
         descriptionLabel.text = selectedEvent.eventDescription
         dateTimeLabel.text = selectedEvent.dateAndTime
         locationLabel.text = selectedEvent.mapLocation
+        createdByLabel.text = selectedEvent.createdBy
         // Do any additional setup after loading the view.
     
         let center = CLLocationCoordinate2D(latitude: CLLocationDegrees(selectedEvent.destLat)!, longitude: CLLocationDegrees(selectedEvent.destLong)!)
@@ -124,8 +124,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
             databaseRef.child("users").child(AppState.sharedInstance.uid!).updateChildValues(["interestedEvents": AppState.sharedInstance.interestedEvents])
             self.interestedImage.image = UIImage(named: "notInterested")
             self.interestedImage.accessibilityIdentifier = "n"
-        }
-        
+        }        
     }
 
     /*

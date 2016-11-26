@@ -10,23 +10,96 @@ import UIKit
 import MapKit
 import CoreLocation
 import Firebase
-import FirebaseDatabase
 
-
-class MyEventsViewController: UIViewController, CLLocationManagerDelegate {
+class MyEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var mapView: MKMapView!
-    var locationManager: CLLocationManager?
+    var myHostedEvents = [Event]()
+    var interestedEvents = [Event]()
+    @IBOutlet weak var hostingEventsTable: UITableView!
+    @IBOutlet weak var interestedEventsTable: UITableView!
     
+    //Handling My Hosted Events table//
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var count: Int?
+        if tableView == self.hostingEventsTable {
+            count = myHostedEvents.count
+        }
+        if tableView == self.interestedEventsTable {
+            count = interestedEvents.count
+        }
+        return count!
+    }
+    
+    // create a cell for each table view row
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // cell reuse id (cells that scroll out of view can be reused)
+        let cellReuseIdentifier = "hostingEventCell"
+        // create a new cell if needed or reuse an old one
+        let cell = self.hostingEventsTable.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! HostingEventsTableViewCell
+        // set the text from the data model
+        if tableView == self.hostingEventsTable {
+            cell.deleteEvent.tag = indexPath.row
+            cell.eventNameLabel.text = myHostedEvents[indexPath.row].eventName
+            cell.eventLocationLabel.text = myHostedEvents[indexPath.row].mapLocation
+            cell.eventDateTimeLabel.text = myHostedEvents[indexPath.row].dateAndTime
+        }
+        else {
+            cell.deleteEvent.alpha = 0
+            cell.editEvent.alpha = 0
+            cell.eventNameLabel.text = interestedEvents[indexPath.row].eventName
+            cell.eventLocationLabel.text = interestedEvents[indexPath.row].mapLocation
+            cell.eventDateTimeLabel.text = interestedEvents[indexPath.row].dateAndTime
+        }
+        return cell
+    }
+    
+    
+    // method to run when table view cell is tapped
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You tapped cell number \(indexPath.row).")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let databaseRef = FIRDatabase.database().reference()
+        myHostedEvents = []
+        interestedEvents = []
+        databaseRef.child("events").observe(.childAdded, with: {snapshot in
+            let value = snapshot.value as? NSDictionary
+            let userID = value?["uid"] as? String ?? ""
+            
+            let eventName = value?["eventName"] as? String ?? ""
+            let eventLocation = value?["eventLocation"] as? String ?? ""
+            let eventDescription = value?["eventDescription"] as? String ?? ""
+            let eventDateAndTime = value?["eventDateAndTime"] as? String ?? ""
+            let eventMaxPeople = value?["eventMaxPeople"] as? String ?? ""
+            let destLat = value?["destLat"] as? String ?? ""
+            let destLong = value?["destLong"] as? String ?? ""
+            let createdBy =  value?["createdBy"] as? String ?? ""
+            let peopleGoing = value?["peopleGoing"] as? String ?? ""
+            let uid = value?["uid"] as? String ?? ""
+            
+            if userID == (AppState.sharedInstance.uid)! {
+                self.myHostedEvents.insert(Event(name: eventName, description: eventDescription, dateAndTime: eventDateAndTime, mapLocation: eventLocation, maxCount: eventMaxPeople, distance: "", dLat: destLat, dLong: destLong, key: snapshot.key, createdBy: createdBy, peopleGoing: peopleGoing, uid: uid), at: 0)
+                self.hostingEventsTable.reloadData()
+            }
+            
+            if AppState.sharedInstance.interestedEvents.contains(snapshot.key) {
+                self.interestedEvents.insert(Event(name: eventName, description: eventDescription, dateAndTime: eventDateAndTime, mapLocation: eventLocation, maxCount: eventMaxPeople, distance: "", dLat: destLat, dLong: destLong, key: snapshot.key, createdBy: createdBy, peopleGoing: peopleGoing, uid: uid), at: 0)
+            }
+            self.interestedEventsTable.reloadData()
+        })
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager?.requestWhenInUseAuthorization()
-        locationManager?.startUpdatingLocation()
-        mapView.showsUserLocation = true
-        
+        self.hostingEventsTable.delegate = self
+        self.hostingEventsTable.dataSource = self
+        self.interestedEventsTable.delegate = self
+        self.interestedEventsTable.dataSource = self
         // Do any additional setup after loading the view.
     }
     
@@ -34,15 +107,5 @@ class MyEventsViewController: UIViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last! as CLLocation
-        //locationManager?.stopUpdatingLocation()
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        self.mapView.setRegion(region, animated: true)
-    }
-    
-
 
 }

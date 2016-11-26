@@ -10,6 +10,16 @@ import UIKit
 
 class HostingEventsTableViewCell: UITableViewCell {
 
+    var editableEvents = [Event]()
+    @IBOutlet weak var deleteEvent: UIButton!
+    @IBOutlet weak var editEvent: UIButton!
+    @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var eventLocationLabel: UILabel!
+    @IBOutlet weak var eventDateTimeLabel: UILabel!
+    
+    @IBAction func deleteEventClick(_ sender: UIButton) {
+        print(sender.tag)
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

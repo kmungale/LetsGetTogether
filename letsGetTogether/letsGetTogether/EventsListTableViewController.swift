@@ -55,9 +55,12 @@ class EventsListTableViewController: UITableViewController, CLLocationManagerDel
             let eventMaxPeople = value?["eventMaxPeople"] as? String ?? ""
             let destLat = value?["destLat"] as? String ?? ""
             let destLong = value?["destLong"] as? String ?? ""
+            let createdBy =  value?["createdBy"] as? String ?? ""
+            let peopleGoing = value?["peopleGoing"] as? String ?? ""
+            let uid = value?["uid"] as? String ?? ""
             let destDistance = self.currentLocation?.distance(from: CLLocation(latitude: CLLocationDegrees(destLat)!, longitude: CLLocationDegrees(destLong)! ))
             
-            self.events.insert(Event(name: eventName, description: eventDescription, dateAndTime: eventDateAndTime, mapLocation: eventLocation, maxCount: eventMaxPeople, distance: String(Int(destDistance!)/1000), dLat: destLat, dLong: destLong, key: snapshot.key), at: 0)
+            self.events.insert(Event(name: eventName, description: eventDescription, dateAndTime: eventDateAndTime, mapLocation: eventLocation, maxCount: eventMaxPeople, distance: String(Int(destDistance!)/1000), dLat: destLat, dLong: destLong, key: snapshot.key, createdBy: createdBy, peopleGoing: peopleGoing, uid: uid), at: 0)
             self.tableView.reloadData()
         })
         locationCount = locationCount! + 1

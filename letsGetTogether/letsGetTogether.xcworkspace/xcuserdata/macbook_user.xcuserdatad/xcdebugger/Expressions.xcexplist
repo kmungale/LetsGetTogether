@@ -3,62 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "EventsListTableViewController.locationManager(CLLocationManager, didUpdateLocations : [CLLocation]) -&gt; ():EventsListTableViewController.swift">
+         contextName = "MyEventsViewController.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:MyEventsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "currentLocation.coordinate.longitude">
-            </PersistentString>
-            <PersistentString
-               value = "AppState">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "EventsListTableViewController.prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ():EventsListTableViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "NewEventViewController.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:NewEventViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.availableLocations.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "LoginViewController.signedIn(FIRUser?) -&gt; ():LoginViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "databaseRef.child(&quot;users&quot;).child(uid).value">
-            </PersistentString>
-            <PersistentString
-               value = "databaseRef.child(&quot;users&quot;)">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "EventDetailsViewController.tapInterestedImage() -&gt; ():EventDetailsViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "AppState.sharedInstance.uid!">
-            </PersistentString>
-            <PersistentString
-               value = "AppState.sharedInstance.interestedEvents">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "EventsListTableViewController.configureDatabase() -&gt; ():EventsListTableViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "ref.child(&quot;events&quot;)">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "EventsListTableViewController.(locationManager(CLLocationManager, didUpdateLocations : [CLLocation]) -&gt; ()).(closure #1):EventsListTableViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "snapshot.value">
+               value = "tableView.tag">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -77,10 +25,59 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "LoginViewController.(signedIn(FIRUser?) -&gt; ()).(closure #1).(closure #1):LoginViewController.swift">
+         contextName = "EventDetailsViewController.tapInterestedImage() -&gt; ():EventDetailsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "AppState.sharedInstance.firstName">
+               value = "AppState.sharedInstance.uid!">
+            </PersistentString>
+            <PersistentString
+               value = "AppState.sharedInstance.interestedEvents">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewEventViewController.(locationUpdated(UITextField) -&gt; ()).(closure #1).(closure #1):NewEventViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "EventsListTableViewController.locationManager(CLLocationManager, didUpdateLocations : [CLLocation]) -&gt; ():EventsListTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentLocation.coordinate.longitude">
+            </PersistentString>
+            <PersistentString
+               value = "AppState">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "EventsListTableViewController.(locationManager(CLLocationManager, didUpdateLocations : [CLLocation]) -&gt; ()).(closure #1):EventsListTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "snapshot.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoginViewController.signedIn(FIRUser?) -&gt; ():LoginViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "databaseRef.child(&quot;users&quot;).child(uid).value">
+            </PersistentString>
+            <PersistentString
+               value = "databaseRef.child(&quot;users&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "EventsListTableViewController.configureDatabase() -&gt; ():EventsListTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "ref.child(&quot;events&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -93,10 +90,40 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NewEventViewController.(locationUpdated(UITextField) -&gt; ()).(closure #1).(closure #1):NewEventViewController.swift">
+         contextName = "MyEventsViewController.(viewDidAppear(Bool) -&gt; ()).(closure #1):MyEventsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "response">
+               value = "userID">
+            </PersistentString>
+            <PersistentString
+               value = "AppState.sharedInstance.uid">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "EventsListTableViewController.prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ():EventsListTableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "LoginViewController.(signedIn(FIRUser?) -&gt; ()).(closure #1).(closure #1):LoginViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "AppState.sharedInstance.firstName">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MyEventsViewController.numberOfSections(in : UITableView) -&gt; Int:MyEventsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tableView.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewEventViewController.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:NewEventViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.availableLocations.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
