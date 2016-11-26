@@ -47,6 +47,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
             cell.eventNameLabel.text = myHostedEvents[indexPath.row].eventName
             cell.eventLocationLabel.text = myHostedEvents[indexPath.row].mapLocation
             cell.eventDateTimeLabel.text = myHostedEvents[indexPath.row].dateAndTime
+            cell.tableReference = self
         }
         else {
             cell.deleteEvent.alpha = 0

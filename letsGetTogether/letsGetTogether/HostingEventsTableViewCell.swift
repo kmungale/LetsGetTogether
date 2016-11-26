@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class HostingEventsTableViewCell: UITableViewCell {
 
     var editableEvents = [Event]()
+    var hostingEventsTable: UITableView?
+    var tableReference: MyEventsViewController?
     @IBOutlet weak var deleteEvent: UIButton!
     @IBOutlet weak var editEvent: UIButton!
     @IBOutlet weak var eventNameLabel: UILabel!
@@ -19,6 +22,8 @@ class HostingEventsTableViewCell: UITableViewCell {
     
     @IBAction func deleteEventClick(_ sender: UIButton) {
         print(sender.tag)
+        self.tableReference?.myHostedEvents.remove(at: sender.tag)
+        self.tableReference?.hostingEventsTable.reloadData()
     }
     override func awakeFromNib() {
         super.awakeFromNib()

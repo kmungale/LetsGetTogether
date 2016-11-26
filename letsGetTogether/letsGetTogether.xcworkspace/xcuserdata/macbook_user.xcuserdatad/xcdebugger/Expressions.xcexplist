@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "HostingEventsTableViewCell.deleteEventClick(UIButton) -&gt; ():HostingEventsTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MyEventsViewController.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:MyEventsViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -14,13 +22,13 @@
          contextName = "LoginViewController.(signedIn(FIRUser?) -&gt; ()).(closure #1):LoginViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "AppState.sharedInstance.uid">
+               value = "snapshot.key">
             </PersistentString>
             <PersistentString
                value = "value.key">
             </PersistentString>
             <PersistentString
-               value = "snapshot.key">
+               value = "AppState.sharedInstance.uid">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
