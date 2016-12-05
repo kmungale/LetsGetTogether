@@ -25,6 +25,8 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
     var coordinates: CLLocationCoordinate2D?
     var availableLocations = [MKMapItem]()
 
+    
+    
     //Programmatic implementing table view
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -92,14 +94,27 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
             self.mapView.setRegion(region, animated: true)
         }
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if AppState.sharedInstance.eventToEdit != nil {
+            let eventToEdit = AppState.sharedInstance.eventToEdit
+            self.eventNameValue.text = eventToEdit?.eventName
+            AppState.sharedInstance.eventToEdit = nil
+        }
+        else {
+            self.eventNameValue.text = ""
+            self.eventDescriptionValue.text = ""
+            self.locationValue.text = ""
+            self.dateAndTimeValue.text = ""
+            self.maxCountValue.text = ""
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-   
     @IBOutlet weak var locationTable: UITableView!
     
     @IBAction func searchLocation(_ sender: UITextField) {
@@ -124,6 +139,28 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
     @IBOutlet weak var dateAndTimeValue: UITextField!
     @IBOutlet weak var locationValue: UITextField!
     @IBOutlet weak var maxCountValue: UITextField!
+    
+    @IBAction func datePicker(_ sender: UITextField) {
+        let datePickerView:UIDatePicker = UIDatePicker()
+        
+        datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
+        
+        sender.inputView = datePickerView
+        
+        datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
+    }
+    
+    func datePickerValueChanged(sender:UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        
+        dateAndTimeValue.text = dateFormatter.string(from: sender.date)
+        
+    }
     
     @IBAction func saveEvent(_ sender: UIButton) {
         let address = self.locationValue.text!

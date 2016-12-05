@@ -124,5 +124,4 @@ class EventsListTableViewController: UITableViewController, CLLocationManagerDel
         detailsController.selectedEventKey = selectedEvent.key
         print(selectedEvent);
     }
-
 }

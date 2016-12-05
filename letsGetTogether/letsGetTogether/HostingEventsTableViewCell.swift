@@ -35,6 +35,16 @@ class HostingEventsTableViewCell: UITableViewCell {
         databaseRef.child("events").updateChildValues([(deletedEvent?.key)! : NSNull()])
         
     }
+    
+    @IBAction func editEventClicked(_ sender: UIButton) {
+        print("Edit clicked")
+        for (index,event) in (self.tableReference?.myHostedEvents.enumerated())! {
+            if index == sender.tag {
+                AppState.sharedInstance.eventToEdit = event
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

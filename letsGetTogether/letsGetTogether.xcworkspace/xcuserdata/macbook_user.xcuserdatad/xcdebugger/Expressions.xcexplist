@@ -112,7 +112,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "EventsListTableViewController.prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ():EventsListTableViewController.swift">
+         contextName = "HostingEventsTableViewCell.editEventClicked(UIButton) -&gt; ():HostingEventsTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "editInstance.eventNameValue">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "LoginViewController.(signedIn(FIRUser?) -&gt; ()).(closure #1).(closure #1):LoginViewController.swift">

@@ -45,6 +45,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         // set the text from the data model
         if tableView == self.hostingEventsTable {
             cell.deleteEvent.tag = indexPath.row
+            cell.editEvent.tag = indexPath.row
             cell.eventNameLabel.text = myHostedEvents[indexPath.row].eventName
             cell.eventLocationLabel.text = myHostedEvents[indexPath.row].mapLocation
             cell.eventDateTimeLabel.text = myHostedEvents[indexPath.row].dateAndTime

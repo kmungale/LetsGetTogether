@@ -19,4 +19,5 @@ class AppState: NSObject {
     var email: String?
     var uid: String?
     var interestedEvents: [String] = []
+    var eventToEdit: Event?
 }
