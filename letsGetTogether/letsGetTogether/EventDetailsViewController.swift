@@ -29,6 +29,8 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var commentInput: UITextField!
     @IBOutlet weak var userComments: UITableView!
     @IBOutlet weak var createdByLabel: UILabel!
+    @IBOutlet weak var peopleGoingLabel: UILabel!
+    
     
     @IBAction func saveComment(_ sender: UIButton) {
         
@@ -65,6 +67,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
         dateTimeLabel.text = selectedEvent.dateAndTime
         locationLabel.text = selectedEvent.mapLocation
         createdByLabel.text = selectedEvent.createdBy
+        peopleGoingLabel.text = selectedEvent.peopleGoing
         // Do any additional setup after loading the view.
     
         let center = CLLocationCoordinate2D(latitude: CLLocationDegrees(selectedEvent.destLat)!, longitude: CLLocationDegrees(selectedEvent.destLong)!)
@@ -117,11 +120,23 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
             self.interestedImage.accessibilityIdentifier = "y"
             AppState.sharedInstance.interestedEvents.append(selectedEventKey!)
             databaseRef.child("users").child(AppState.sharedInstance.uid!).updateChildValues(["interestedEvents": AppState.sharedInstance.interestedEvents])
+            databaseRef.child("events").child(selectedEvent.key).updateChildValues(
+                [
+                    "peopleGoing": String(Int(peopleGoingLabel.text!)! + 1)
+                ]
+            )
+            peopleGoingLabel.text = String(Int(peopleGoingLabel.text!)! + 1)
         }
         else {
             let eventIndex = AppState.sharedInstance.interestedEvents.index(of: selectedEventKey!)
             AppState.sharedInstance.interestedEvents.remove(at: (eventIndex)!)
             databaseRef.child("users").child(AppState.sharedInstance.uid!).updateChildValues(["interestedEvents": AppState.sharedInstance.interestedEvents])
+            databaseRef.child("events").child(selectedEvent.key).updateChildValues(
+                [
+                    "peopleGoing": String(Int(peopleGoingLabel.text!)! + 1)
+                ]
+            )
+            peopleGoingLabel.text = String(Int(peopleGoingLabel.text!)! - 1)
             self.interestedImage.image = UIImage(named: "notInterested")
             self.interestedImage.accessibilityIdentifier = "n"
         }        
