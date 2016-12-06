@@ -41,6 +41,7 @@ class HostingEventsTableViewCell: UITableViewCell {
         for (index,event) in (self.tableReference?.myHostedEvents.enumerated())! {
             if index == sender.tag {
                 AppState.sharedInstance.eventToEdit = event
+                AppState.sharedInstance.editMode = true
             }
         }
     }

@@ -25,13 +25,21 @@
          contextName = "LoginViewController.(signedIn(FIRUser?) -&gt; ()).(closure #1):LoginViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "snapshot.key">
+               value = "AppState.sharedInstance.uid">
             </PersistentString>
             <PersistentString
                value = "value.key">
             </PersistentString>
             <PersistentString
-               value = "AppState.sharedInstance.uid">
+               value = "snapshot.key">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewEventViewController.(saveEvent(UIButton) -&gt; ()).(closure #1):NewEventViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(AppState.sharedInstance.eventToEdit?.key)!">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -74,6 +82,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "EventsListTableViewController.(locationManager(CLLocationManager, didUpdateLocations : [CLLocation]) -&gt; ()).(closure #2):EventsListTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "value?[&quot;eventLocation&quot;] as? String ?? &quot;&quot;">
+            </PersistentString>
+            <PersistentString
+               value = "snapshot.key">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "LoginViewController.signedIn(FIRUser?) -&gt; ():LoginViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -93,10 +112,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NewEventViewController.(locationUpdated(UITextField) -&gt; ()).(closure #1):NewEventViewController.swift">
+         contextName = "HostingEventsTableViewCell.editEventClicked(UIButton) -&gt; ():HostingEventsTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "(error) != nil || location == nil">
+               value = "editInstance.eventNameValue">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -112,10 +131,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "HostingEventsTableViewCell.editEventClicked(UIButton) -&gt; ():HostingEventsTableViewCell.swift">
+         contextName = "NewEventViewController.(locationUpdated(UITextField) -&gt; ()).(closure #1):NewEventViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "editInstance.eventNameValue">
+               value = "(error) != nil || location == nil">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

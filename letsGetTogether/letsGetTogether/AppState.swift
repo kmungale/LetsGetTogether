@@ -20,4 +20,5 @@ class AppState: NSObject {
     var uid: String?
     var interestedEvents: [String] = []
     var eventToEdit: Event?
+    var editMode: Bool?
 }

@@ -96,17 +96,20 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if AppState.sharedInstance.eventToEdit != nil {
-            let eventToEdit = AppState.sharedInstance.eventToEdit
-            self.eventNameValue.text = eventToEdit?.eventName
-            AppState.sharedInstance.eventToEdit = nil
-        }
-        else {
+        if self.navigationController?.navigationBar.backItem == nil {
             self.eventNameValue.text = ""
             self.eventDescriptionValue.text = ""
             self.locationValue.text = ""
             self.dateAndTimeValue.text = ""
             self.maxCountValue.text = ""
+        }
+        else {
+            let eventToEdit = AppState.sharedInstance.eventToEdit
+            self.eventNameValue.text = eventToEdit?.eventName
+            self.eventDescriptionValue.text = eventToEdit?.eventDescription
+            self.dateAndTimeValue.text = eventToEdit?.dateAndTime
+            self.locationValue.text = eventToEdit?.mapLocation
+            self.maxCountValue.text = eventToEdit?.maxCount
         }
     }
     
@@ -173,21 +176,37 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
             let eventMaxPeople = self.maxCountValue.text!
             let destLat = String((self.coordinates?.latitude)!)
             let destLong =  String((self.coordinates?.longitude)!)
-            
-            //TODO: Use class constructor instead of separate variables
-            let post : [String : AnyObject] = ["eventName" : eventName as AnyObject,
-                                               "eventLocation" : eventLocation as AnyObject,
-                                               "eventDescription" : eventDescription as AnyObject,
-                                               "eventDateAndTime" : eventDateAndTime as AnyObject,
-                                               "eventMaxPeople" : eventMaxPeople as AnyObject,
-                                               "destLat": destLat as AnyObject,
-                                               "destLong": destLong as AnyObject,
-                                               "createdBy": (AppState.sharedInstance.firstName! + " " + AppState.sharedInstance.lastName!) as AnyObject,
-                                               "peopleGoing": 0 as AnyObject,
-                                               "uid": (AppState.sharedInstance.uid)! as AnyObject]
-            
             let databaseRef = FIRDatabase.database().reference()
-            databaseRef.child("events").childByAutoId().setValue(post)
+            
+            if self.navigationController?.navigationBar.backItem == nil {
+                //TODO: Use class constructor instead of separate variables
+                let post : [String : AnyObject] = ["eventName" : eventName as AnyObject,
+                                                   "eventLocation" : eventLocation as AnyObject,
+                                                   "eventDescription" : eventDescription as AnyObject,
+                                                   "eventDateAndTime" : eventDateAndTime as AnyObject,
+                                                   "eventMaxPeople" : eventMaxPeople as AnyObject,
+                                                   "destLat": destLat as AnyObject,
+                                                   "destLong": destLong as AnyObject,
+                                                   "createdBy": (AppState.sharedInstance.firstName! + " " + AppState.sharedInstance.lastName!) as AnyObject,
+                                                   "peopleGoing": 0 as AnyObject,
+                                                   "uid": (AppState.sharedInstance.uid)! as AnyObject]
+                
+                
+                databaseRef.child("events").childByAutoId().setValue(post)
+            }
+            else {
+                databaseRef.child("events").child((AppState.sharedInstance.eventToEdit?.key)!).updateChildValues(
+                    [
+                    "eventName" : eventName as AnyObject,
+                    "eventLocation" : eventLocation as AnyObject,
+                    "eventDescription" : eventDescription as AnyObject,
+                    "eventDateAndTime" : eventDateAndTime as AnyObject,
+                    "eventMaxPeople" : eventMaxPeople as AnyObject,
+                    "destLat": destLat as AnyObject,
+                    "destLong": destLong as AnyObject
+                    ]
+                )
+            }
             
             self.eventNameValue.text = ""
             self.eventDescriptionValue.text = ""

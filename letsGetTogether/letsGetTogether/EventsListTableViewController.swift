@@ -63,6 +63,21 @@ class EventsListTableViewController: UITableViewController, CLLocationManagerDel
             self.events.insert(Event(name: eventName, description: eventDescription, dateAndTime: eventDateAndTime, mapLocation: eventLocation, maxCount: eventMaxPeople, distance: String(Int(destDistance!)/1000), dLat: destLat, dLong: destLong, key: snapshot.key, createdBy: createdBy, peopleGoing: peopleGoing, uid: uid), at: 0)
             self.tableView.reloadData()
         })
+        databaseRef.child("events").queryOrderedByKey().observe(.childChanged, with: {snapshot in
+            let value = snapshot.value as? NSDictionary
+            for (index, event) in self.events.enumerated() {
+                if event.key == snapshot.key {
+                    event.eventName = value?["eventName"] as? String ?? ""
+                    event.mapLocation = value?["eventLocation"] as? String ?? ""
+                    event.eventDescription = value?["eventDescription"] as? String ?? ""
+                    event.dateAndTime = value?["eventDateAndTime"] as? String ?? ""
+                    event.maxCount = value?["eventMaxPeople"] as? String ?? ""
+                    event.destLat = value?["destLat"] as? String ?? ""
+                    event.destLong = value?["destLong"] as? String ?? ""
+                }
+            }
+            self.tableView.reloadData()
+        })
         databaseRef.child("events").queryOrderedByKey().observe(.childRemoved, with: {snapshot in
             var deletedEventIndex: Int?
             for (index, event) in self.events.enumerated() {
