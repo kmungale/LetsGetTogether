@@ -75,6 +75,7 @@ class EventsListTableViewController: UITableViewController, CLLocationManagerDel
                     event.destLat = value?["destLat"] as? String ?? ""
                     event.destLong = value?["destLong"] as? String ?? ""
                     event.peopleGoing = value?["peopleGoing"] as? String ?? ""
+                    event.createdBy = value?["createdBy"] as? String ?? ""
                 }
             }
             self.tableView.reloadData()

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class UserProfileViewController: UIViewController {
 
@@ -28,6 +30,31 @@ class UserProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func updateProfile(_ sender: UIButton) {
+        let databaseRef = FIRDatabase.database().reference()
+        databaseRef.child("users").child(AppState.sharedInstance.uid!).updateChildValues(
+            [
+                "firstName": firstNameInput.text!,
+                "lastName": lastNameInput.text!
+            ]
+        )
+        AppState.sharedInstance.firstName = firstNameInput.text!
+        AppState.sharedInstance.lastName = lastNameInput.text!
+        
+        databaseRef.child("events").observe(.childAdded, with: {snapshot in
+            let value = snapshot.value as? NSDictionary
+            let userID = value?["uid"] as? String ?? ""
+            if userID == (AppState.sharedInstance.uid)! {
+                databaseRef.child("events").child(snapshot.key).updateChildValues(
+                    [
+                        "createdBy": self.firstNameInput.text! + " " + self.lastNameInput.text!
+                    ]
+                )
+            }
+            
+        })
+        
+    }
 
     /*
     // MARK: - Navigation

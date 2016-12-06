@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "NewEventViewController.(saveEvent(UIButton) -&gt; ()).(closure #1):NewEventViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(AppState.sharedInstance.eventToEdit?.key)!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "HostingEventsTableViewCell.deleteEventClick(UIButton) -&gt; ():HostingEventsTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -14,32 +22,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MyEventsViewController.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:MyEventsViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "tableView.tag">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "LoginViewController.(signedIn(FIRUser?) -&gt; ()).(closure #1):LoginViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "AppState.sharedInstance.uid">
+               value = "snapshot.key">
             </PersistentString>
             <PersistentString
                value = "value.key">
             </PersistentString>
             <PersistentString
-               value = "snapshot.key">
+               value = "AppState.sharedInstance.uid">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NewEventViewController.(saveEvent(UIButton) -&gt; ()).(closure #1):NewEventViewController.swift">
+         contextName = "MyEventsViewController.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:MyEventsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "(AppState.sharedInstance.eventToEdit?.key)!">
+               value = "tableView.tag">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -74,21 +74,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "EventsListTableViewController.(locationManager(CLLocationManager, didUpdateLocations : [CLLocation]) -&gt; ()).(closure #1):EventsListTableViewController.swift">
+         contextName = "EventsListTableViewController.(locationManager(CLLocationManager, didUpdateLocations : [CLLocation]) -&gt; ()).(closure #2):EventsListTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "snapshot.value">
+               value = "snapshot.key">
+            </PersistentString>
+            <PersistentString
+               value = "value?[&quot;eventLocation&quot;] as? String ?? &quot;&quot;">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "EventsListTableViewController.(locationManager(CLLocationManager, didUpdateLocations : [CLLocation]) -&gt; ()).(closure #2):EventsListTableViewController.swift">
+         contextName = "EventsListTableViewController.(locationManager(CLLocationManager, didUpdateLocations : [CLLocation]) -&gt; ()).(closure #1):EventsListTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "value?[&quot;eventLocation&quot;] as? String ?? &quot;&quot;">
-            </PersistentString>
-            <PersistentString
-               value = "snapshot.key">
+               value = "snapshot.value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -159,6 +159,14 @@
          <PersistentStrings>
             <PersistentString
                value = "self.availableLocations.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "UserProfileViewController.updateProfile(UIButton) -&gt; ():UserProfileViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "firstNameInput.text!">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
