@@ -133,7 +133,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
             databaseRef.child("users").child(AppState.sharedInstance.uid!).updateChildValues(["interestedEvents": AppState.sharedInstance.interestedEvents])
             databaseRef.child("events").child(selectedEvent.key).updateChildValues(
                 [
-                    "peopleGoing": String(Int(peopleGoingLabel.text!)! + 1)
+                    "peopleGoing": String(Int(peopleGoingLabel.text!)! - 1)
                 ]
             )
             peopleGoingLabel.text = String(Int(peopleGoingLabel.text!)! - 1)
