@@ -43,6 +43,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
         let childRef = databaseRef.child("events")
         let childRef1 = childRef.child(selectedEventKey!)
         childRef1.child("comments").childByAutoId().setValue(postComment)
+        commentInput.text = ""
         
     }
     

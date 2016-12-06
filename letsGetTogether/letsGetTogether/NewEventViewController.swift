@@ -16,7 +16,7 @@ struct Data {
     var name: String
 }
 
-class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
+class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     var ref: FIRDatabaseReference!
     var dataStorage: UserDefaults?
@@ -69,6 +69,11 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
         locationTable.alpha = 0
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         location.delegate = self
@@ -76,6 +81,9 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
         location.requestWhenInUseAuthorization()
         //location?.startUpdatingLocation()
         mapView.showsUserLocation = true
+        
+        self.locationValue.delegate = self
+        
         
         //Programmatic Table view for locations//
         self.locationTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -166,6 +174,11 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
     }
     
     @IBAction func saveEvent(_ sender: UIButton) {
+        if(eventDescriptionValue.text == "" || eventNameValue.text == "" || locationValue.text == "" || dateAndTimeValue.text == "" || maxCountValue.text == ""){
+            
+            return
+            
+        }
         let address = self.locationValue.text!
         geocode.geocodeAddressString(address) { (location, error) in
             self.coordinates = location?[0].location!.coordinate
