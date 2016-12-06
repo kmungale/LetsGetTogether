@@ -53,6 +53,21 @@ class LoginViewController: UIViewController {
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
             if let error = error {
                 print(error.localizedDescription)
+                
+                let alertController = UIAlertController(
+                    title: "Invalid Credentials",
+                    message: error.localizedDescription,
+                    preferredStyle: UIAlertControllerStyle.alert
+                )
+                
+                let confirmAction = UIAlertAction(
+                title: "OK", style: UIAlertActionStyle.default) { (action) in
+                    // ...
+                }
+                
+                alertController.addAction(confirmAction)
+                self.present(alertController, animated: true, completion: nil)
+                
                 return
             }
             self.signedIn(user!)
@@ -71,6 +86,20 @@ class LoginViewController: UIViewController {
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
             if let error = error {
                 print(error.localizedDescription)
+                
+                let alertController = UIAlertController(
+                    title: "Error",
+                    message: error.localizedDescription,
+                    preferredStyle: UIAlertControllerStyle.alert
+                )
+                
+                let confirmAction = UIAlertAction(
+                title: "OK", style: UIAlertActionStyle.default) { (action) in
+                    // ...
+                }
+                
+                alertController.addAction(confirmAction)
+                self.present(alertController, animated: true, completion: nil)
                 return
             }
             self.setDisplayName(user!)
