@@ -188,7 +188,7 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
                                                    "destLat": destLat as AnyObject,
                                                    "destLong": destLong as AnyObject,
                                                    "createdBy": (AppState.sharedInstance.firstName! + " " + AppState.sharedInstance.lastName!) as AnyObject,
-                                                   "peopleGoing": 0 as AnyObject,
+                                                   "peopleGoing": "0" as AnyObject,
                                                    "uid": (AppState.sharedInstance.uid)! as AnyObject]
                 
                 
