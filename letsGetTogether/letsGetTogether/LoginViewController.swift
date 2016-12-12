@@ -15,7 +15,7 @@ struct Segues {
     static let SignInToMain = "SignInToMain"
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var passWord: UITextField!
@@ -23,6 +23,17 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var firstNameInput: UITextField!
     @IBOutlet weak var lastNameInput: UITextField!
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         if let user = FIRAuth.auth()?.currentUser {
@@ -32,7 +43,12 @@ class LoginViewController: UIViewController {
         self.firstNameLabel.alpha = 0
         self.lastNameInput.alpha = 0
         self.lastNameLabel.alpha = 0
+        self.userName.delegate = self
+        self.passWord.delegate = self
+        self.firstNameInput.delegate = self
+        self.lastNameInput.delegate = self
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

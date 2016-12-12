@@ -70,8 +70,13 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        textField.resignFirstResponder()
         return false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        super.touchesBegan(touches, with: event)
     }
     
     override func viewDidLoad() {
@@ -83,6 +88,11 @@ class NewEventViewController: UIViewController, CLLocationManagerDelegate, UITab
         mapView.showsUserLocation = true
         
         self.locationValue.delegate = self
+        self.eventNameValue.delegate = self
+        self.eventDescriptionValue.delegate = self
+        self.dateAndTimeValue.delegate = self
+        self.maxCountValue.delegate = self
+        
         
         
         //Programmatic Table view for locations//

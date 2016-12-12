@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class UserProfileViewController: UIViewController {
+class UserProfileViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var firstNameInput: UITextField!
     @IBOutlet weak var lastNameInput: UITextField!
@@ -18,6 +18,8 @@ class UserProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.firstNameInput.delegate = self
+        self.lastNameInput.delegate = self
         emailInput.isUserInteractionEnabled = false
         emailInput.text = AppState.sharedInstance.email
         firstNameInput.text = AppState.sharedInstance.firstName
@@ -28,6 +30,16 @@ class UserProfileViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        super.touchesBegan(touches, with: event)
     }
     
     @IBAction func updateProfile(_ sender: UIButton) {
